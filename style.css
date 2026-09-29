@@ -1,0 +1,162 @@
+/* ===== 基础设置 ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 60px 8vw;
+  background: #ffffff;
+  color: #111111;
+  font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 1200px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== 顶部：姓名简介 + 联系方式 ===== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 80px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.header .bio {
+  max-width: 600px;
+}
+
+.header .bio p {
+  margin: 0 0 6px 0;
+}
+
+.header .contact {
+  display: flex;
+  gap: 24px;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+/* ===== 年份分组标题 ===== */
+.year-block {
+  margin-bottom: 60px;
+}
+
+.year-title {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 36px;
+  letter-spacing: 1px;
+}
+
+/* ===== 作品条目网格 ===== */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 40px;
+}
+
+.work-item .title-cn {
+  margin: 0;
+}
+
+.work-item .title-en {
+  margin: 0;
+  color: #444;
+}
+
+/* 响应式：窄屏时变成单列 */
+@media (max-width: 700px) {
+  body {
+    padding: 40px 6vw;
+  }
+  .works-grid {
+    grid-template-columns: 1fr;
+  }
+  .header {
+    flex-direction: column;
+  }
+}
+
+/* ===== CV 页面 ===== */
+.cv-meta p {
+  margin: 2px 0;
+}
+
+.cv-entry {
+  margin-top: 28px;
+}
+
+.cv-venue {
+  font-weight: 600;
+  margin: 0 0 6px 0;
+}
+
+.cv-title {
+  font-weight: 600;
+  margin: 0;
+}
+
+.cv-detail {
+  margin: 0;
+  color: #333;
+}
+
+.cv-date {
+  margin: 0;
+  color: #333;
+}
+
+.cv-section-title {
+  font-weight: 600;
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+.cv-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.cv-list li {
+  margin-bottom: 8px;
+}
+
+/* ===== 作品详情页 ===== */
+.back-link {
+  display: inline-block;
+  margin-bottom: 40px;
+}
+
+.project-title-cn {
+  font-size: 22px;
+  margin: 0 0 4px 0;
+}
+
+.project-title-en {
+  font-size: 16px;
+  color: #444;
+  margin: 0 0 40px 0;
+}
+
+.project-media img,
+.project-media video {
+  max-width: 100%;
+  display: block;
+  margin-bottom: 24px;
+}
+
+.project-description {
+  max-width: 700px;
+}
