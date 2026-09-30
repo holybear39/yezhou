@@ -160,3 +160,37 @@ a:hover {
 .project-description {
   max-width: 700px;
 }
+/* ===== 自动播放相册 ===== */
+.slideshow {
+  position: relative;
+  max-width: 100%;
+  margin-bottom: 24px;
+}
+
+.slideshow img {
+  width: 100%;
+  display: block;
+}
+
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.7);
+  border: none;
+  font-size: 20px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.slide-btn:hover {
+  background: rgba(255,255,255,0.95);
+}
+
+.slide-prev {
+  left: 10px;
+}
+
+.slide-next {
+  right: 10px;
+}
