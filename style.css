@@ -90,6 +90,7 @@ a:hover {
    /* 手机屏幕下,相册框的尺寸 */
   .slideshow {
     width: 100%;
+    max-width: 300px;
     height: 300px;
   }
 }
