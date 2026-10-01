@@ -205,3 +205,14 @@ a:hover {
 .slide-next {
   right: 10px;
 }
+.related-works {
+  margin: 24px 0 40px 0;
+}
+
+.related-works p {
+  margin: 0 0 8px 0;
+}
+
+.related-works a {
+  text-decoration: underline;
+}
