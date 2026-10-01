@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 把下面的标题改成这个作品的名字 -->
+<title>胶冻小组 The Jelly Troupe </title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a class="back-link" href="index.html">&larr; 返回 / Back</a>
+
+  <!-- 中文标题 -->
+  <h1 class="project-title-cn">胶冻小组</h1>
+  <!-- 英文标题 -->
+  <p class="project-title-en">The Jelly Troupe, 2025 - </p>
+
+  <div class="project-media">
+    <div class="slideshow">
+      <img id="slide-img" src="images/the-jelly-troup-01.jpeg" alt="作品图片">
+      <button class="slide-btn slide-prev" onclick="changeSlide(-1)">&#10094;</button>
+      <button class="slide-btn slide-next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+  </div>
+
+  <script>
+    const slides = [
+     "images/the-jelly-troup-01.jpeg",
+     
+    ];
+    let current = 0;
+    let timer;
+  
+    function showSlide(index) {
+      current = (index + slides.length) % slides.length;
+      document.getElementById('slide-img').src = slides[current];
+    }
+  
+    function changeSlide(direction) {
+      showSlide(current + direction);
+      resetTimer();
+    }
+  
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => showSlide(current + 1), 3000);
+    }
+  
+    resetTimer();
+  </script>
+    
+    <div class="project-description">
+      <p>胶冻小组是由郑叶舟、Camille Casemier、Juan Flores、陈紫在弘美术馆「走归计划」中组成的创作共同体。成员立足于自身创作路径与文化背景，通过制作表演、参与式工作坊、装置来讨论，透过胶冻来看水潭村的过程。“胶冻”之名来自水潭村的特色美食“岩衣胶冻”，是由渔民采摘自北策岛礁岩上的岩衣藻熬制而成的甜品。
+  </p>
+      The Jelly Troupe is a collective formed by Zheng Yezhou, Camille Casemier, Juan Flores, and Chen Zi during the Hong Museum's "Return Journey Project" (走归计划). Drawing on their own creative practices and cultural backgrounds, the members use performance-making, participatory workshops, and installations to explore the process of seeing Shuitan Village through jelly. The name "Jelly" comes from yanyi jiaodong (岩衣胶冻), a specialty dish of Shuitan Village: a sweet jelly made by fishermen who harvest rock-moss algae from the reefs of Beice Island and boil it down.
+    </div>
+  
+  </body>
+  </html>
