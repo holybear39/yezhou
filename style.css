@@ -87,12 +87,6 @@ a:hover {
   .header {
     flex-direction: column;
   }
-   /* 手机屏幕下,相册框的尺寸 */
-  .slideshow {
-    width: 100%;
-    max-width: 300px;
-    height: 300px;
-  }
 }
 
 /* ===== CV 页面 ===== */
@@ -169,7 +163,8 @@ a:hover {
 /* ===== 自动播放相册 ===== */
 .slideshow {
   position: relative;
-  width: 700px;
+  width: 100%;
+  max-width: 700px;
   height: 500px;
   overflow: hidden;
   margin: 0 0 24px 0;
@@ -215,4 +210,235 @@ a:hover {
 
 .related-works a {
   text-decoration: underline;
+}
+
+/* 手机屏幕下,相册框的高度(必须写在 .slideshow 基础规则之后才会生效) */
+@media (max-width: 700px) {
+  .slideshow {
+    height: 300px;
+  }
+}
+
+/* ===== 长文图文叙事页(如 imaginariesofanisland) ===== */
+.project-quote {
+  font-style: italic;
+  color: #555;
+  text-align: center;
+  margin: 32px 0;
+}
+
+.doc-figure {
+  margin: 0 0 32px 0;
+}
+
+.doc-figure img {
+  width: 100%;
+  display: block;
+}
+
+.img-pair {
+  display: flex;
+  gap: 16px;
+}
+
+.img-pair img {
+  width: 50%;
+  display: block;
+}
+
+.img-caption {
+  font-size: 13px;
+  font-style: italic;
+  color: #666;
+  margin: 10px 0 0 0;
+}
+
+.project-info {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid #ddd;
+}
+
+.project-info p {
+  margin: 0 0 6px 0;
+}
+
+/* ===== 句子网格 + 点开弹窗(水边踏踏步) ===== */
+.sentence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 40px 0;
+}
+
+.sentence-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 内容统一从格子顶部开始排 */
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.7;
+  color: inherit;
+  text-align: left;
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  padding: 28px 24px;
+  min-height: 140px;
+  cursor: pointer;
+}
+
+.sentence-cell:hover {
+  background: #f5f5f5;
+}
+
+.cell-cn {
+  display: block;
+}
+
+.cell-en {
+  display: block;
+  margin-top: 10px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+  color: #666;
+}
+
+.cell-by {
+  display: block;
+  margin-top: 16px;
+  font-size: 13px;
+  color: #999;
+  white-space: pre-wrap; /* 保留名字里的空格,比如 （     ） */
+}
+
+#modal-by {
+  white-space: pre-wrap;
+}
+
+.modal-empty {
+  margin: 0;
+  padding: 80px 0;
+  text-align: center;
+  color: #999;
+  border: 1px solid #e2e2e2;
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #ffffff;
+  overflow-y: auto;
+  padding: 60px 6vw;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.modal-close {
+  position: fixed;
+  top: 20px;
+  right: 6vw;
+  font-size: 32px;
+  line-height: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #111;
+}
+
+.modal-head {
+  max-width: 700px;
+  margin-bottom: 32px;
+}
+
+.modal-sentence {
+  margin: 0 0 8px 0;
+  font-weight: 600;
+}
+
+.modal-note {
+  margin: 0;
+  color: #444;
+}
+
+/* 相册:瀑布流排列,保留每张照片原始比例(横图竖图都不裁切) */
+.gallery {
+  columns: 3;
+  column-gap: 12px;
+}
+
+.gallery img {
+  width: 100%;
+  display: block;
+  margin-bottom: 12px;
+  break-inside: avoid;
+  cursor: zoom-in;
+}
+
+/* 点击照片后的大图查看 */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: #ffffff;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 88vh;
+  object-fit: contain;
+}
+
+.lb-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 28px;
+  padding: 16px;
+  cursor: pointer;
+  color: #111;
+}
+
+.lb-prev { left: 1vw; }
+.lb-next { right: 1vw; }
+
+.lb-close {
+  position: absolute;
+  top: 20px;
+  right: 6vw;
+  font-size: 32px;
+  line-height: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #111;
+}
+
+@media (max-width: 700px) {
+  .sentence-grid {
+    grid-template-columns: 1fr;
+  }
+  .gallery {
+    columns: 2;
+  }
 }
