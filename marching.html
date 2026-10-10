@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>水边踏踏步 · 叶舟</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a class="back-link" href="index.html">&larr; 返回 / Back</a>
+
+  <h1 class="project-title-cn">水边踏踏步</h1>
+  <!-- 英文标题:想加的话,取消下一行的注释并改成你的英文名 -->
+  <!-- <p class="project-title-en">English title</p> -->
+
+  <!-- ========== 第 1 部分:网格容器(格子由下面的脚本自动生成,这里留空即可) ========== -->
+  <div class="sentence-grid" id="sentence-grid"></div>
+
+  <!-- ========== 第 2 部分:点开一句话后出现的相册弹窗(不用改) ========== -->
+  <div class="modal-overlay" id="modal">
+    <button class="modal-close" id="modal-close" aria-label="关闭">&times;</button>
+    <div class="modal-box">
+      <div class="modal-head">
+        <p class="modal-sentence" id="modal-cn"></p>
+        <p class="modal-note" id="modal-en"></p>
+        <p class="modal-note" id="modal-by"></p>
+        <p class="modal-note" id="modal-note"></p>
+      </div>
+      <div class="gallery" id="modal-gallery"></div>
+    </div>
+  </div>
+
+  <!-- 点击相册里的照片后的大图查看(不用改) -->
+  <div class="lightbox" id="lightbox">
+    <button class="lb-btn lb-prev" id="lb-prev" aria-label="上一张">&#10094;</button>
+    <img id="lb-img" alt="">
+    <button class="lb-btn lb-next" id="lb-next" aria-label="下一张">&#10095;</button>
+    <button class="lb-close" id="lb-close" aria-label="关闭">&times;</button>
+  </div>
+
+  <!-- ========== 第 3 部分:脚本。你只需要改最上面的 items 列表 ========== -->
+  <script>
+    // 每一项 = 一个格子 = 一句话。想加新的,就复制一个 { ... } 块,块与块之间要有英文逗号。
+    // 文字都用反引号 ` 包起来(键盘左上角 esc 下面那个键,要在英文输入法下打),
+    // 这样文字里有双引号也不会出错。
+    //
+    // images 是这句话对应的表演照片列表,有几张写几张,每行一个路径,行末加英文逗号(最后一张不加)。
+    // 例如:
+    //   images: [
+    //     `images/marching/s1-01.jpeg`,
+    //     `images/marching/s1-02.jpeg`,
+    //     `images/marching/s1-03.jpeg`
+    //   ],
+    // images 留空 [] 的话,点开会显示"影像即将上传",所以可以先发布、再慢慢补。
+    const items = [
+      {
+        by: `小软`,
+        cn: `因为太阳进入了狮子座，而陌生人已经将他的手指放在死者的嘴上。`,
+        en: `For the Sun enters the sign of the Lion and the Stranger，has laid his finger on the mouth of the Dead.`,
+        note: ``,
+        images: []
+      },
+      {
+        by: `（     ）`,
+        cn: `当清晨带着王国的预兆、带着死水的预兆，高高地悬在世界的烟雾之上时，流亡的鼓声在边地苏醒。在沙地上打着永恒的呵欠。`,
+        en: `when at morning with omen of kingdoms and omen of dead waters swung high over the smokes of the world, the drums of exile waken on the marches. Eternity yawning on the sands.`,
+        note: ``,
+        images: []
+      },
+      {
+        by: `蕴涵`,
+        cn: `我走跟着你走，在一片覆盖着香脂的高坡土地上伟大者的亚麻布被摊开来晾晒。`,
+        en: `I tread, you tread in a land of high slopes clothed in balm, where the linen of the Great is exposed to dry.`,
+        note: ``,
+        images: []
+      },
+      {
+        by: `有舒`,
+        cn: `风起来了，海风。而被摊开晾晒的亚麻布散开了（领导的亚麻布）！像一个被撕成碎片的祭司。`,
+        en: `Rises the wind, the sea-wind. And the linen exposed to dry scatters! like a priest torn in pieces.`,
+        note: ``,
+        images: []
+      },
+      {
+        by: `jojo yejo`,
+        cn: `溪流躺在河床里,如同女人的哭喊;这世界的美,胜过一张涂成红色的公羊皮。`,
+        en: `the streams are in their beds like the cries of women and this world has more beauty than a ram’s skin painted red.`,
+        note: ``,
+        images: []
+      },
+      {
+        by: `雅子`,
+        cn: `某某人,某某人之子,一个穷人,身上落下了征兆与异象的权能。`,
+        en: `Upon such one, son of such an one, a poor man, devolves the power of signs and visions.`,
+        note: ``,
+        images: []
+      },
+      {
+        by: `黑卡路`,
+        cn: `新街上鞭子的噼啪声,卸下了整整几大车尚未孵出的恶。`,
+        en: `The cracking of whips in the new streets unloads whole wainsful of unhatched evils.`,
+        note: ``,
+        images: []
+      },
+      {
+        by: `zhan`,
+        cn: `孤独啊!一队队星辰掠过世界的边缘,从厨房里征召了一盏家常的明灯。`,
+        en: `Solitude! squadrons of stars pass the edge of the world, engaging from the kitchens a domestic luminary.`,
+        note: ``,
+        images: []
+      },
+      {
+        by: `luiz`,
+        cn: `前往那个名为"枯树之地"的地方:`,
+        en: `To the place called the Place of the Dry Tree:`,
+        note: ``,
+        images: []
+      }
+    ];
+
+    // ---------- 以下是功能代码,不用改 ----------
+    const grid = document.getElementById('sentence-grid');
+    const modal = document.getElementById('modal');
+    const galleryBox = document.getElementById('modal-gallery');
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+
+    let lbImages = [];
+    let lbIndex = 0;
+
+    function addLine(parent, className, text) {
+      if (!text) return;
+      const span = document.createElement('span');
+      span.className = className;
+      span.textContent = text;
+      parent.appendChild(span);
+    }
+
+    // 生成首页的格子
+    items.forEach(function (item, i) {
+      const cell = document.createElement('button');
+      cell.className = 'sentence-cell';
+      addLine(cell, 'cell-cn', item.cn);
+      addLine(cell, 'cell-en', item.en);
+      addLine(cell, 'cell-by', item.by);
+      cell.addEventListener('click', function () { openModal(i); });
+      grid.appendChild(cell);
+    });
+
+    // 打开某一句话的相册
+    function openModal(i) {
+      const item = items[i];
+      document.getElementById('modal-cn').textContent = item.cn;
+      document.getElementById('modal-en').textContent = item.en;
+      document.getElementById('modal-by').textContent = item.by || '';
+      document.getElementById('modal-note').textContent = item.note || '';
+
+      galleryBox.innerHTML = '';
+      if (!item.images || item.images.length === 0) {
+        galleryBox.innerHTML = '<p class="modal-empty">影像即将上传 / Coming soon</p>';
+      } else {
+        item.images.forEach(function (src, idx) {
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = '';
+          img.loading = 'lazy';
+          img.addEventListener('click', function () { openLightbox(item.images, idx); });
+          galleryBox.appendChild(img);
+        });
+      }
+
+      modal.scrollTop = 0;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      galleryBox.innerHTML = '';
+      document.body.style.overflow = '';
+    }
+
+    // 大图查看
+    function showLightbox() {
+      lbImg.src = lbImages[lbIndex];
+    }
+
+    function openLightbox(images, index) {
+      lbImages = images;
+      lbIndex = index;
+      showLightbox();
+      lightbox.classList.add('open');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lbImg.removeAttribute('src');
+    }
+
+    function stepLightbox(direction) {
+      lbIndex = (lbIndex + direction + lbImages.length) % lbImages.length;
+      showLightbox();
+    }
+
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    document.getElementById('lb-prev').addEventListener('click', function () { stepLightbox(-1); });
+    document.getElementById('lb-next').addEventListener('click', function () { stepLightbox(1); });
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (lightbox.classList.contains('open')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') stepLightbox(-1);
+        if (e.key === 'ArrowRight') stepLightbox(1);
+      } else if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
+
+</body>
+</html>
