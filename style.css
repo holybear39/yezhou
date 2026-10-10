@@ -442,3 +442,8 @@ a:hover {
     columns: 2;
   }
 }
+
+/* 水边踏踏步:格子上方的介绍区域 */
+.project-intro {
+  margin-top: 28px;
+}
