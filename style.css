@@ -484,3 +484,138 @@ a:hover {
     height: 260px;
   }
 }
+
+/* ===== 顶部栏:返回 + 「作品 / Works」下拉菜单 ===== */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.topbar .back-link {
+  margin-bottom: 0;
+}
+
+.works-menu {
+  position: relative;
+}
+
+.works-toggle {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.works-toggle:hover {
+  text-decoration: underline;
+}
+
+.works-panel {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 14px);
+  width: 360px;
+  max-width: calc(100vw - 12vw);
+  max-height: 70vh;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  padding: 20px 24px;
+  text-align: left;
+  z-index: 50;
+}
+
+.works-menu.open .works-panel {
+  display: block;
+}
+
+.works-year {
+  margin: 20px 0 10px 0;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #999;
+}
+
+.works-year:first-child {
+  margin-top: 0;
+}
+
+.works-panel a {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.works-panel .w-cn {
+  display: block;
+}
+
+.works-panel .w-en {
+  display: block;
+  font-size: 13px;
+  color: #666;
+}
+
+.works-panel a.current .w-cn {
+  font-weight: 600;
+}
+
+.works-note {
+  margin: 0;
+  color: #666;
+}
+
+/* 「作品」菜单里的二级菜单(胶冻小组) */
+.works-group-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.works-group-toggle::after {
+  content: "▸";
+  flex-shrink: 0;
+  margin-left: 12px;
+  color: #999;
+}
+
+.works-group.open .works-group-toggle::after {
+  content: "▾";
+}
+
+.works-group-toggle:hover .w-cn {
+  text-decoration: underline;
+}
+
+.works-sub {
+  display: none;
+  margin: 0 0 14px 4px;
+  padding-left: 14px;
+  border-left: 1px solid #e2e2e2;
+}
+
+.works-group.open .works-sub {
+  display: block;
+}
+
+.works-sub .works-overview .w-cn {
+  font-size: 13px;
+  color: #666;
+}
