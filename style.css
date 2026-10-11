@@ -447,3 +447,40 @@ a:hover {
 .project-intro {
   margin-top: 28px;
 }
+
+/* ===== 首页轮播 ===== */
+.home-slideshow {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+  background: #fff;
+  margin: 0 0 12px 0;
+}
+
+.home-slideshow a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.home-slideshow img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: opacity 0.25s ease;
+}
+
+.home-slide-caption {
+  margin: 0 0 60px 0;
+  font-size: 13px;
+  color: #666;
+  min-height: 1.6em;
+}
+
+@media (max-width: 700px) {
+  .home-slideshow {
+    height: 260px;
+  }
+}
