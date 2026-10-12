@@ -622,6 +622,7 @@ a:hover {
 
 /* 水边踏踏步:规则框(蓝色,不能点开) */
 .rules-cell {
+  grid-column: 1 / -1;   /* 占满整整一行(横跨所有列) */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
