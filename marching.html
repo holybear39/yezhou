@@ -9,9 +9,9 @@
 <body>
 
   <div class="topbar">
-     <a class="back-link" href="index.html">&larr; 返回 / Back</a>
-     <div class="works-menu" id="works-menu"></div>
-   </div>
+    <a class="back-link" href="index.html">&larr; 返回 / Back</a>
+    <div class="works-menu" id="works-menu"></div>
+  </div>
 
   <h1 class="project-title-cn" style="text-align:center">水边踏踏步</h1>
   <!-- 英文标题:想加的话,取消下一行的注释并改成你的英文名 -->
@@ -25,13 +25,13 @@
 
   <!-- ========== 第 1 部分:网格容器(格子由下面的脚本自动生成,这里留空即可) ========== -->
   <div class="sentence-grid" id="sentence-grid">
-  <!-- 规则框:蓝色,不能点开。在这里写规则;想加段落就复制 <p>...</p> -->
-  <div class="rules-cell">
-    <p class="rules-title">规则 / Rules</p>
-    <p class="rules-cn">20个由长诗《Anabasis》改编的谱（Scores）行为沿村展开。大家（1-3人一组）自由认领（每组需要认领2-3个指示）并选择各自的位置进行即兴的行为表演，并一同决定表演的开始和结束地点。每组表演最长时间为10分钟。上一组需要为下一组报幕。</p>
-<p class="rules-en">Twenty scores for actions, adapted from the long poem <em>Anabasis</em>, unfold along the village. Participants, in groups of 1–3, freely claim instructions (each group claims 2–3), choose their own positions, perform improvised actions, and together decide where the performance begins and ends. Each group performs for 10 minutes at most. The preceding group introduces the next group.</p>
+    <!-- 规则框:蓝色,不能点开。在这里写规则;想加段落就复制 <p>...</p> -->
+    <div class="rules-cell">
+      <p class="rules-title">规则 / Rules</p>
+      <p class="rules-cn">20个由长诗《Anabasis》改编的谱（Scores）行为沿村展开。大家（1-3人一组）自由认领（每组需要认领2-3个指示）并选择各自的位置进行即兴的行为表演，并一同决定表演的开始和结束地点。每组表演最长时间为10分钟。上一组需要为下一组报幕。</p>
+      <p class="rules-en">Twenty scores for actions, adapted from the long poem <em>Anabasis</em>, unfold along the village. Participants, in groups of 1–3, freely claim instructions (each group claims 2–3), choose their own positions, perform improvised actions, and together decide where the performance begins and ends. Each group performs for 10 minutes at most. The preceding group introduces the next group.</p>
+    </div>
   </div>
-</div>
 
   <!-- ========== 第 2 部分:点开一句话后出现的相册弹窗(不用改) ========== -->
   <div class="modal-overlay" id="modal">
@@ -69,6 +69,8 @@
     //     `images/marching/s1-03.jpeg`
     //   ],
     // images 留空 [] 的话,点开会显示"影像即将上传",所以可以先发布、再慢慢补。
+    // 鼠标移到格子上时,会有一张照片从下往上盖住格子:默认用 images 里的第一张;
+    // 想指定另一张,在这一项里加一行  cover: `images/marching/xxx.jpeg`,
     const items = [
       {
         by: `小软`,
@@ -80,7 +82,7 @@
       {
         by: `（     ）`,
         cn: `当清晨带着王国的预兆、带着死水的预兆，高高地悬在世界的烟雾之上时，流亡的鼓声在边地苏醒。在沙地上打着永恒的呵欠。`,
-        en: `When at morning with omen of kingdoms and omen of dead waters swung high over the smokes of the world, the drums of exile waken on the marches. Eternity yawning on the sands.`,
+        en: `when at morning with omen of kingdoms and omen of dead waters swung high over the smokes of the world, the drums of exile waken on the marches. Eternity yawning on the sands.`,
         note: ``,
         images: []
       },
@@ -101,7 +103,7 @@
       {
         by: `jojo yejo`,
         cn: `溪流躺在河床里,如同女人的哭喊;这世界的美,胜过一张涂成红色的公羊皮。`,
-        en: `The streams are in their beds like the cries of women and this world has more beauty than a ram’s skin painted red.`,
+        en: `the streams are in their beds like the cries of women and this world has more beauty than a ram’s skin painted red.`,
         note: ``,
         images: []
       },
@@ -160,7 +162,10 @@
       addLine(cell, 'cell-cn', item.cn);
       addLine(cell, 'cell-en', item.en);
       addLine(cell, 'cell-by', item.by);
-            const coverSrc = item.cover || (item.images && item.images[0]);
+
+      // 鼠标移上去时从下往上盖住格子的照片:默认用这句话的第一张照片,
+      // 想换成别的,在这一项里加一行 cover: `images/marching/xxx.jpeg`,
+      const coverSrc = item.cover || (item.images && item.images[0]);
       if (coverSrc) {
         const cover = document.createElement('span');
         cover.className = 'cell-cover';
@@ -170,6 +175,7 @@
         cover.appendChild(coverImg);
         cell.appendChild(cover);
       }
+
       cell.addEventListener('click', function () { openModal(i); });
       grid.appendChild(cell);
     });
