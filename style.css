@@ -619,3 +619,36 @@ a:hover {
   font-size: 13px;
   color: #666;
 }
+
+/* 水边踏踏步:规则框(蓝色,不能点开) */
+.rules-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 140px;
+  padding: 28px 24px;
+  font-size: 15px;
+  line-height: 1.7;
+  text-align: left;
+  color: #1f3bff;
+  background: #fff;
+  border: 1px solid #1f3bff;
+  cursor: default;
+}
+
+.rules-cell p {
+  margin: 0 0 10px 0;
+}
+
+.rules-cell p:last-child {
+  margin-bottom: 0;
+}
+
+.rules-title {
+  font-weight: 600;
+}
+
+.rules-en {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+}
