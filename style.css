@@ -626,10 +626,9 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: 140px;
-  padding: 28px 24px;
-  font-size: 15px;
-  line-height: 1.7;
+  padding: 10px 12px;
+  font-size: 12.5px;
+  line-height: 1.6;
   text-align: left;
   color: #1f3bff;
   background: #fff;
@@ -638,7 +637,7 @@ a:hover {
 }
 
 .rules-cell p {
-  margin: 0 0 10px 0;
+  margin: 0 0 4px 0;
 }
 
 .rules-cell p:last-child {
@@ -651,7 +650,7 @@ a:hover {
 
 .rules-en {
   font-family: "Courier New", Courier, monospace;
-  font-size: 14px;
+  font-size: 11.5px;
 }
 
 /* 鼠标移到格子上时,一张照片从下往上滑出并盖住格子 */
@@ -685,4 +684,10 @@ a:hover {
 /* 用键盘 Tab 键选中格子时也会盖上照片 */
 .sentence-cell:focus-visible .cell-cover {
   transform: translateY(0);
+}
+
+/* 水边踏踏步:除规则框以外,所有句子格子大小一致 */
+.sentence-grid {
+  grid-template-rows: auto;   /* 第一行(规则框)按它自己内容的高度 */
+  grid-auto-rows: 1fr;        /* 其余所有行高度统一,等于其中最高的那一格 */
 }
