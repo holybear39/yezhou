@@ -160,6 +160,16 @@
       addLine(cell, 'cell-cn', item.cn);
       addLine(cell, 'cell-en', item.en);
       addLine(cell, 'cell-by', item.by);
+            const coverSrc = item.cover || (item.images && item.images[0]);
+      if (coverSrc) {
+        const cover = document.createElement('span');
+        cover.className = 'cell-cover';
+        const coverImg = document.createElement('img');
+        coverImg.src = coverSrc;
+        coverImg.alt = '';
+        cover.appendChild(coverImg);
+        cell.appendChild(cover);
+      }
       cell.addEventListener('click', function () { openModal(i); });
       grid.appendChild(cell);
     });
