@@ -58,6 +58,12 @@
     return path.split('#')[0].split('?')[0].split('/').pop().replace(/\.html$/, '');
   }
 
+  // 把标题去掉空格和标点、转小写,用来判断两个条目是不是同一个作品(文件名对不上时也能认出来)
+  function titleKey(item) {
+    const t = (item.cn || item.en || '').toLowerCase();
+    return t.replace(/[\s\u3000，,。.、:：;；!！?？"'“”‘’()（）\-—_]/g, '');
+  }
+
   const here = pageName(location.pathname);
   const groupKey = pageName(GROUP_PAGE);
 
@@ -105,24 +111,37 @@
   // 读胶冻小组页面里的「相关作品」列表
   function readMembers(doc, yearGroups) {
     if (!doc) return [];
-    const known = {};
+    const knownByHref = {};
+    const knownByTitle = {};
     yearGroups.forEach(function (g) {
-      g.items.forEach(function (item) { known[pageName(item.href)] = item; });
+      g.items.forEach(function (item) {
+        const hk = pageName(item.href);
+        const tk = titleKey(item);
+        if (!knownByHref[hk]) knownByHref[hk] = item;
+        if (tk && !knownByTitle[tk]) knownByTitle[tk] = item;
+      });
     });
     const members = [];
-    const seen = {};
+    const seenHref = {};
+    const seenTitle = {};
     doc.querySelectorAll('.related-works a').forEach(function (a) {
       const href = a.getAttribute('href');
       if (!href) return;
       const key = pageName(href);
-      if (key === groupKey || seen[key]) return;
-      seen[key] = true;
-      if (known[key]) {
-        members.push(known[key]);              // 首页里有,就用首页里的中英文标题
-      } else {
-        const parts = textOf(a).split(' / ');  // 首页里没有,就用这个链接自己的文字(「中文 / English」)
-        members.push({ href: href, cn: parts[0], en: parts.slice(1).join(' / ') });
+      if (key === groupKey || seenHref[key]) return;
+
+      let item = knownByHref[key];                       // 1. 文件名和首页对得上
+      if (!item) {
+        const parts = textOf(a).split(' / ');
+        const own = { href: href, cn: parts[0], en: parts.slice(1).join(' / ') };
+        item = knownByTitle[titleKey(own)] || own;       // 2. 文件名对不上,但标题一样 -> 用首页里那一条
       }
+      const tk = titleKey(item);
+      if (tk && seenTitle[tk]) return;                   // 同一个作品只留一条
+      seenHref[key] = true;
+      seenHref[pageName(item.href)] = true;
+      if (tk) seenTitle[tk] = true;
+      members.push(item);
     });
     return members;
   }
@@ -202,20 +221,33 @@
   function render(yearGroups, members) {
     panel.textContent = '';
     const hasGroup = members.length > 0;
-    const memberKeys = {};
-    members.forEach(function (m) { memberKeys[pageName(m.href)] = true; });
+    const memberHref = {};
+    const memberTitle = {};
+    members.forEach(function (m) {
+      memberHref[pageName(m.href)] = true;
+      const tk = titleKey(m);
+      if (tk) memberTitle[tk] = true;
+    });
+    const seenHref = {};
+    const seenTitle = {};
     let groupDrawn = false;
 
     yearGroups.forEach(function (g) {
       const nodes = [];
       g.items.forEach(function (item) {
         const key = pageName(item.href);
+        const tk = titleKey(item);
         if (hasGroup && key === groupKey) {
+          if (groupDrawn) return;
           nodes.push(buildGroup(item, members));
           groupDrawn = true;
-        } else if (hasGroup && memberKeys[key]) {
-          return;                                  // 已经收进二级菜单了,这里不再重复显示
+        } else if (hasGroup && (memberHref[key] || (tk && memberTitle[tk]))) {
+          return;                                   // 已经收进二级菜单了,这里不再重复显示
+        } else if (seenHref[key] || (tk && seenTitle[tk])) {
+          return;                                   // 首页里本身重复的,也只显示一条
         } else {
+          seenHref[key] = true;
+          if (tk) seenTitle[tk] = true;
           nodes.push(buildLink(item));
         }
       });
