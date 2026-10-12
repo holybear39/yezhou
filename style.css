@@ -653,3 +653,36 @@ a:hover {
   font-family: "Courier New", Courier, monospace;
   font-size: 14px;
 }
+
+/* 鼠标移到格子上时,一张照片从下往上滑出并盖住格子 */
+.sentence-cell {
+  position: relative;
+  overflow: hidden;
+}
+
+.cell-cover {
+  position: absolute;
+  inset: 0;
+  transform: translateY(calc(100% + 3px));   /* 多藏 3px,避免边缘露出一条细线 */
+  transition: transform 0.45s ease;
+  pointer-events: none;
+}
+
+.cell-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 只在有鼠标的设备上触发,手机触屏上不会出现"点一下就卡在悬停状态"的情况 */
+@media (hover: hover) {
+  .sentence-cell:hover .cell-cover {
+    transform: translateY(0);
+  }
+}
+
+/* 用键盘 Tab 键选中格子时也会盖上照片 */
+.sentence-cell:focus-visible .cell-cover {
+  transform: translateY(0);
+}
