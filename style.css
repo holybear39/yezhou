@@ -691,3 +691,237 @@ a:hover {
   grid-template-rows: auto;   /* 第一行(规则框)按它自己内容的高度 */
   grid-auto-rows: 1fr;        /* 其余所有行高度统一,等于其中最高的那一格 */
 }
+
+/* ============================================================
+   杂志风长文页(mag-):标题区 + 章节 + 双语正文 + 各种图片排法
+   用在 imaginariesofanisland1.html,以后别的长文页也能用同一套
+   ============================================================ */
+
+/* ---- 标题区 ---- */
+.mag-header {
+  max-width: 760px;
+  margin: 0 auto 48px auto;
+  text-align: center;
+}
+
+.mag-title {
+  margin: 0 0 10px 0;
+  font-size: 32px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.mag-subtitle {
+  margin: 0 0 28px 0;
+  font-size: 17px;
+  line-height: 1.5;
+  color: #555;
+}
+
+.mag-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 36px;
+  margin: 0;
+  padding: 12px 0;
+  font-size: 13px;
+  color: #555;
+  border-top: 1px solid #e2e2e2;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.mag-meta b {
+  margin-right: 6px;
+  font-weight: 600;
+  color: #111;
+}
+
+/* ---- 章节标题:01 工作坊 / Workshop ---- */
+.mag-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 14px;
+  max-width: 860px;
+  margin: 72px auto 36px auto;
+  padding-top: 14px;
+  border-top: 1px solid #111;
+}
+
+.mag-section-num {
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #999;
+}
+
+.mag-section-cn {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.mag-section-en {
+  font-size: 15px;
+  color: #666;
+}
+
+/* ---- 引言 ---- */
+.mag-quote {
+  max-width: 760px;
+  margin: 48px auto;
+  font-size: 20px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.mag-quote .en {
+  display: block;
+  margin-top: 6px;
+  font-size: 15px;
+  font-style: italic;
+  color: #666;
+}
+
+/* ---- 双语正文:左中文,右英文 ---- */
+.mag-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 48px;
+  max-width: 860px;
+  margin: 0 auto 40px auto;
+}
+
+.mag-cols p,
+.mag-split-text p {
+  margin: 0 0 12px 0;
+}
+
+.mag-cols .en,
+.mag-split-text .en {
+  font-size: 14px;
+  color: #555;
+}
+
+/* 想只写一种语言、排成一栏时,给 mag-cols 再加上 single */
+.mag-cols.single {
+  grid-template-columns: 1fr;
+  max-width: 640px;
+}
+
+/* ---- 单张图 ---- */
+.mag-fig {
+  max-width: 720px;
+  margin: 0 auto 40px auto;
+}
+
+.mag-fig img {
+  display: block;
+  width: 100%;
+}
+
+.mag-fig figcaption,
+.mag-caption {
+  margin-top: 10px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: #666;
+}
+
+.mag-fig figcaption .en,
+.mag-caption .en {
+  display: block;
+  margin-top: 2px;
+  font-style: italic;
+}
+
+/* ---- 两张 / 三张并排 ---- */
+.mag-row {
+  display: grid;
+  gap: 16px;
+  max-width: 860px;
+  margin: 0 auto 40px auto;
+  align-items: start;
+}
+
+.mag-row.two {
+  grid-template-columns: 1fr 1fr;
+}
+
+.mag-row.three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.mag-row .mag-fig {
+  max-width: none;
+  margin: 0;
+}
+
+/* 一排图共用一条说明时,说明放在这一排的下面 */
+.mag-row + .mag-caption {
+  max-width: 860px;
+  margin: -28px auto 40px auto;
+}
+
+/* ---- 图文并排:一边图,一边字 ---- */
+.mag-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  max-width: 860px;
+  margin: 0 auto 40px auto;
+}
+
+.mag-split .mag-fig {
+  max-width: none;
+  margin: 0;
+}
+
+/* 加上 reverse,文字在左、图在右 */
+.mag-split.reverse .mag-split-text {
+  order: -1;
+}
+
+/* ---- 结尾信息栏 ---- */
+.mag-info {
+  max-width: 860px;
+  margin: 64px auto 0 auto;
+  padding-top: 24px;
+  border-top: 1px solid #e2e2e2;
+  font-size: 14px;
+}
+
+.mag-info p {
+  margin: 0 0 6px 0;
+}
+
+.mag-top {
+  max-width: 860px;
+  margin: 40px auto 0 auto;
+  font-size: 13px;
+  text-align: right;
+}
+
+/* ---- 手机:全部改成一栏 ---- */
+@media (max-width: 700px) {
+  .mag-title {
+    font-size: 25px;
+  }
+  .mag-cols,
+  .mag-split {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .mag-split .mag-fig {
+    margin-bottom: 20px;
+  }
+  .mag-split.reverse .mag-split-text {
+    order: 0;
+  }
+  .mag-row.three {
+    grid-template-columns: 1fr;
+  }
+  .mag-row + .mag-caption {
+    margin-top: -28px;
+  }
+}
