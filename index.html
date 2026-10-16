@@ -26,7 +26,7 @@
   <button class="slide-btn slide-prev" id="home-prev" aria-label="上一张">&#10094;</button>
   <button class="slide-btn slide-next" id="home-next" aria-label="下一张">&#10095;</button>
 </div>
-<p class="home-slide-caption" style="text-align:center"><a id="home-slide-caption"><a id="home-slide-caption-link"></a></p>
+<p class="home-slide-caption" id="home-slide-caption" style="text-align:center"><a id="home-slide-caption-link"></a></p>
 
 <script>
 (function () {
@@ -43,8 +43,8 @@
     { src: `images/island-fish-15.jpeg`, href: `leaveyourislandlikeafish.html`, caption: `像鱼一样离开你的岛 / Leave your island like a fish` },
     { src: `images/the-jelly-troupe-01.jpg`, href: `thejellytroupe.html`, caption: `胶冻小组 / The Jelly Troupe` },
     { src: `images/the-jelly-troupe-03.jpeg`, href: `thejellytroupe.html`, caption: `胶冻小组 / The Jelly Troupe` },
-    { src: `images/imaginariesofanisland/imaginariesofanisland-04.jpeg`, href: `imaginariesofanisland.html`, caption: `无人岛的遐想 / Imaginaries of an Island` },
-    { src: `images/imaginariesofanisland/imaginariesofanisland-13.jpeg`, href: `imaginariesofanisland.html`, caption: `无人岛的遐想 / Imaginaries of an Island` }
+    { src: `images/imaginariesofanisland/imaginariesofanisland-04.jpeg`, href: `imaginariesofanisland1.html`, caption: `关于岛的想像 #1 / Imaginaries of an Island #1` },
+    { src: `images/imaginariesofanisland/imaginariesofanisland-13.jpeg`, href: `imaginariesofanisland1.html`, caption: `关于岛的想像 #1 / Imaginaries of an Island #1` }
   ];
 
   const INTERVAL = 3000;   // 每张停留多久,单位毫秒,3000 = 3 秒
@@ -125,13 +125,13 @@
   <div class="year-block">
     <div class="year-title">2025 - 2026</div>
     <div class="works-grid">
-      <div class="work-item">
+      <div class="work-item is-group" data-source="thejellytroupe.html">
         <p class="title-cn"><a href="thejellytroupe.html">胶冻小组</a></p>
         <p class="title-en"><a href="thejellytroupe.html">The Jelly Troupe</a></p>
        </div>
        <div class="work-item">
         <p class="title-cn"><a href="writing-remarks.html">写作 . 关于水潭村和胶冻小组</a></p>
-        <p class="title-en"><a href="writing-remarks.html">Writing . Remarks on Shuitan Village & The Jelly Troupe</a></p>
+        <p class="title-en"><a href="writing-remarks.html">Writing . Remarks on Shuitan Village &amp; The Jelly Troupe</a></p>
        </div>
       <div class="work-item">
         <p class="title-cn"><a href="firstvisit.html">第一次拜访胶冻店</a></p>
@@ -168,8 +168,6 @@
       <div class="work-item">
         <p class="title-cn"><a href="winterrain.html">冬天不过三天雨，夏天不过三天晴</a></p>
         <p class="title-en"><a href="winterrain.html">Winter rain never lasts more than three days;<br>summer's clear skies never last more than three days</a></p>
-      </div>
-      
       </div>
     </div>
   </div>
@@ -210,6 +208,8 @@
       </div>
     </div>
   </div>
+
+  <script src="group-box.js"></script>
 
 </body>
 </html>

@@ -925,3 +925,90 @@ a:hover {
     margin-top: -28px;
   }
 }
+
+/* ===== 首页:点开式分组盒子(胶冻小组) ===== */
+/* 盒子展开时占一整行,后面的作品会自动补到它上面那一行的空位里 */
+.works-grid.has-group {
+  grid-auto-flow: dense;
+}
+
+/* 「胶冻小组」后面的小箭头(只有脚本成功读到名单后才会出现) */
+.work-item.group-ready .title-cn a::after {
+  content: " ▸";
+  font-size: 0.85em;
+  color: #999;
+}
+
+.work-item.group-ready.open .title-cn a::after {
+  content: " ▾";
+}
+
+.work-item.group-ready a {
+  cursor: pointer;
+}
+
+.group-box {
+  display: none;
+  grid-column: 1 / -1;
+  margin: 4px 0 16px 0;
+  padding: 22px 28px 30px 28px;
+  border: 1px solid #e2e2e2;
+  background: #fff;
+}
+
+.group-box.open {
+  display: block;
+  animation: groupOpen 0.3s ease;
+}
+
+@keyframes groupOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.group-box-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e2e2e2;
+  font-size: 14px;
+}
+
+.group-intro {
+  font-weight: 600;
+}
+
+.group-intro:hover {
+  text-decoration: underline;
+}
+
+.group-close {
+  flex-shrink: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: #666;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.group-close:hover {
+  color: #111;
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  .group-box {
+    padding: 18px 16px 22px 16px;
+  }
+}
