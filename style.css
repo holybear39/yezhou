@@ -268,7 +268,7 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  margin: 40px 0;
+  margin: 40px 0 120px 0;   /* 下面多留一段空白,不要贴着页面底部 */
 }
 
 .sentence-cell {
@@ -437,6 +437,7 @@ a:hover {
 @media (max-width: 700px) {
   .sentence-grid {
     grid-template-columns: 1fr;
+    margin-bottom: 140px;   /* 手机浏览器底部的工具栏会盖住一部分,所以多留一点 */
   }
   .gallery {
     columns: 2;
