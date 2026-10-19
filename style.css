@@ -1013,3 +1013,194 @@ a:hover {
     padding: 18px 16px 22px 16px;
   }
 }
+
+/* ============================================================
+   杂志风长文页:补充的版式(目录、小标题、引文、人物表、深色页)
+   用在 writing-remarks.html
+   ============================================================ */
+
+/* 横向的宽图 / 竖向的图 */
+.mag-fig.wide {
+  max-width: 860px;
+}
+
+.mag-fig.portrait {
+  max-width: 440px;
+}
+
+.mag-row .mag-fig.portrait {
+  max-width: none;
+}
+
+/* ---- 目录 ---- */
+.mag-toc {
+  max-width: 860px;
+  margin: 0 auto 64px auto;
+  padding-top: 18px;
+  border-top: 1px solid #e2e2e2;
+  font-size: 14px;
+}
+
+.mag-toc-title {
+  margin: 0 0 12px 0;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #999;
+}
+
+.mag-toc ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  columns: 2;
+  column-gap: 48px;
+}
+
+.mag-toc li {
+  margin-bottom: 8px;
+  break-inside: avoid;
+}
+
+.mag-toc ol ol {
+  columns: auto;
+  margin: 8px 0 0 0;
+  padding-left: 1.2em;
+}
+
+.mag-toc ol ol li {
+  margin-bottom: 0;
+}
+
+.mag-toc .en {
+  display: block;
+  font-size: 13px;
+  color: #666;
+}
+
+/* ---- 小标题(章节里的小节) ---- */
+.mag-sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  max-width: 860px;
+  margin: 56px auto 28px auto;
+}
+
+.mag-sub-cn {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.mag-sub-en {
+  font-size: 14px;
+  color: #666;
+}
+
+/* ---- 引文:左边一道竖线,中英文并排 ---- */
+.mag-cols.quote {
+  padding-left: 20px;
+  border-left: 2px solid #111;
+  font-size: 13.5px;
+}
+
+.mag-cols.quote .attr {
+  margin-top: 4px;
+  font-size: 12.5px;
+  color: #666;
+}
+
+/* ---- 人物表 ---- */
+.mag-people {
+  max-width: 860px;
+  margin: 0 auto 40px auto;
+}
+
+.mag-people-title {
+  margin: 0 0 6px 0;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #999;
+}
+
+.mag-people-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 48px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.mag-people-row p {
+  margin: 0;
+}
+
+.mag-people-row .en {
+  color: #555;
+  font-size: 13.5px;
+}
+
+/* ---- 深色页:卡密尔的行为谱 ---- */
+.mag-dark {
+  max-width: 860px;
+  margin: 0 auto 40px auto;
+  padding: 56px 48px;
+  color: #fff;
+  background: #000;
+  text-align: center;
+}
+
+.mag-dark p {
+  margin: 0 0 14px 0;
+}
+
+.mag-dark .en {
+  font-size: 15px;
+}
+
+.mag-dark .gap {
+  margin-top: 30px;
+}
+
+.mag-dark .sign {
+  margin-top: 36px;
+  text-align: right;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.mag-dark img {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  margin: 48px auto 0 auto;
+}
+
+.mag-score-list {
+  max-width: 440px;
+  margin: 22px auto 0 auto;
+  padding: 0;
+  list-style: none;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #ddd;
+  text-align: center;
+}
+
+.mag-score-list li {
+  margin-bottom: 6px;
+}
+
+@media (max-width: 700px) {
+  .mag-toc ol {
+    columns: 1;
+  }
+  .mag-people-row {
+    grid-template-columns: 1fr;
+    gap: 4px 0;
+  }
+  .mag-dark {
+    padding: 36px 20px;
+  }
+}
