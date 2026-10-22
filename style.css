@@ -1204,3 +1204,21 @@ a:hover {
     padding: 36px 20px;
   }
 }
+
+/* ===== 居中版作品页:在 <body> 上加 class="page-center" 就生效 =====
+   标题、相册、介绍文字都居中(只影响加了这个 class 的页面) */
+.page-center .project-title-cn,
+.page-center .project-title-en {
+  text-align: center;
+}
+
+.page-center .slideshow {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-center .project-description {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;   /* 想让段落文字保持靠左、只让这一块居中,就删掉这一行 */
+}
