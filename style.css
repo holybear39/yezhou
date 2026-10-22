@@ -1222,3 +1222,112 @@ a:hover {
   margin-right: auto;
   text-align: center;   /* 想让段落文字保持靠左、只让这一块居中,就删掉这一行 */
 }
+
+/* ===== 写作页:语言切换按钮 + 单语阅读版式 =====
+   只有页面里设置了 data-lang(writing-remarks.html)才会生效,不影响别的页面 */
+.lang-switch {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 -8vw 36px -8vw;
+  padding: 10px 8vw;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.lang-switch button {
+  font-family: inherit;
+  font-size: 13.5px;
+  line-height: 1.2;
+  padding: 8px 16px;
+  color: #111;
+  background: #fff;
+  border: 1px solid #111;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.lang-switch button[aria-pressed="true"] {
+  color: #fff;
+  background: #111;
+}
+
+html[data-lang="zh"] .en,
+html[data-lang="en"] .zh {
+  display: none !important;
+}
+
+/* 单语:正文排成一栏,字号放大,更好读 */
+html[data-lang] .mag-cols {
+  grid-template-columns: 1fr;
+  max-width: 680px;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+html[data-lang="en"] .mag-cols {
+  line-height: 1.7;
+}
+
+html[data-lang] .mag-cols .en {
+  font-size: inherit;
+  color: inherit;
+}
+
+html[data-lang] .mag-cols p {
+  margin-bottom: 1em;
+}
+
+html[data-lang] .mag-cols.quote {
+  font-size: 15.5px;
+}
+
+html[data-lang] .mag-section,
+html[data-lang] .mag-sub,
+html[data-lang] .mag-people,
+html[data-lang] .mag-toc,
+html[data-lang] .mag-header {
+  max-width: 680px;
+}
+
+html[data-lang] .mag-people-row {
+  grid-template-columns: 1fr;
+  font-size: 15.5px;
+}
+
+html[data-lang] .mag-people-row .en {
+  font-size: inherit;
+}
+
+html[data-lang] .mag-toc ol {
+  columns: 1;
+}
+
+html[data-lang] .mag-fig figcaption .en,
+html[data-lang] .mag-caption .en {
+  font-style: normal;
+}
+
+html[data-lang] .mag-dark .en,
+html[data-lang] .mag-dark .zh {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+@media (max-width: 700px) {
+  .lang-switch {
+    margin: 0 -6vw 28px -6vw;
+    padding: 8px 6vw;
+    gap: 6px;
+  }
+  .lang-switch button {
+    font-size: 12.5px;
+    padding: 7px 11px;
+  }
+  html[data-lang] .mag-cols {
+    font-size: 16.5px;
+  }
+}
