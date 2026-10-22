@@ -10,9 +10,9 @@
 
   <div class="header">
     <div class="bio">
-      <p>你好, 我叫叶舟, 是一名以实践为基础的艺术家, 现居中国温州。</p>
+      <p>你好, 我是叶舟</p>
       <p style="margin-top:16px; color:#555;">
-        Hey there, my name is Yejo, a practice based artist lives in Wenzhou, China.<br>
+        Hey there, I'm Yejo <br>
       </p>
     </div>
     <div class="contact">
@@ -38,16 +38,20 @@
   // 文字用反引号 ` 包起来,要在英文输入法下打。
   // 路径写错或文件不存在的照片会被自动跳过,不会出现破损图标。
   const candidates = [
-    { src: `images/island-fish-04.jpeg`, href: `leaveyourislandlikeafish.html`, caption: `像鱼一样离开你的岛 / Leave your island like a fish` },
-    { src: `images/island-fish-10.jpeg`, href: `leaveyourislandlikeafish.html`, caption: `像鱼一样离开你的岛 / Leave your island like a fish` },
-    { src: `images/island-fish-15.jpeg`, href: `leaveyourislandlikeafish.html`, caption: `像鱼一样离开你的岛 / Leave your island like a fish` },
-    { src: `images/the-jelly-troupe-01.jpg`, href: `thejellytroupe.html`, caption: `胶冻小组 / The Jelly Troupe` },
+    { src: `marching2/s5-11.jpeg`, href: `marching.html`, caption: `水边踏踏步，上海，2026 / Marching by the Water, Shanghai,2026` },
+    { src: `winter/rain-14.jpeg`, href: `winterrain.html`, caption: `胶冻小组 冬天不过三天雨，夏天不过三天晴，温州，2026 ` },
+    { src: `still/ness-01.jpg`,href: `stillness.html`, caption: `Stillness`},
+    { src: `thejellytroup/kean-07.jpeg`, href: `imaginariesofanisland2.html`, caption: `胶冻小组 关于岛的想像 #2，温州肯恩大学，2025 / The Jelly Troupe Imaginaries of an Island #2, Wenzhou Kean University, 2025` },
+    { src: `images/island-fish-03.jpeg`, href: `leaveyourislandlikeafish.html`, caption: `胶冻小组 像鱼一样离开你的岛 / Leave your island like a fish` },
+    { src: `images/the-jelly-troupe-01.jpeg`, href: `thejellytroupe.html`, caption: `胶冻小组 / The Jelly Troupe` },
     { src: `images/the-jelly-troupe-03.jpeg`, href: `thejellytroupe.html`, caption: `胶冻小组 / The Jelly Troupe` },
     { src: `images/imaginariesofanisland/imaginariesofanisland-04.jpeg`, href: `imaginariesofanisland1.html`, caption: `关于岛的想像 #1 / Imaginaries of an Island #1` },
-    { src: `images/imaginariesofanisland/imaginariesofanisland-13.jpeg`, href: `imaginariesofanisland1.html`, caption: `关于岛的想像 #1 / Imaginaries of an Island #1` }
+    { src: `images/imaginariesofanisland/imaginariesofanisland-13.jpeg`, href: `imaginariesofanisland1.html`, caption: `关于岛的想像 #1 / Imaginaries of an Island #1` },
+    { src: `parentheses-01.jpg`,href: `parentheses.html`, caption: `Series of reflective self portrait and moving images`},
+    { src: `stillness-01.jpg`,href: `livingmatter.html`, caption: `Living Matter` }
   ];
 
-  const INTERVAL = 3000;   // 每张停留多久,单位毫秒,3000 = 3 秒
+  const INTERVAL = 4000;   // 每张停留多久,单位毫秒,3000 = 3 秒
 
   // ---------- 以下是功能代码,不用改 ----------
   const box = document.getElementById('home-slideshow');
@@ -161,10 +165,7 @@
         <p class="title-cn"><a href="lichenonthemoon.html">月球上的地衣</a></p>
         <p class="title-en"><a href="lichenonthemoon.html">Lichen on the moon</a></p>
       </div>
-      <div class="work-item">
-        <p class="title-cn"><a href="butterfly.html">巴尔干小蝴蝶</a></p>
-        <p class="title-en"><a href="butterfly.html">Little Balkan Butterfly</a></p>
-      </div>
+   
       <div class="work-item">
         <p class="title-cn"><a href="winterrain.html">冬天不过三天雨，夏天不过三天晴</a></p>
         <p class="title-en"><a href="winterrain.html">Winter rain never lasts more than three days;<br>summer's clear skies never last more than three days</a></p>
@@ -181,15 +182,12 @@
       <div class="work-item">
         <p class="title-cn"><a href="stillness.html">Stillness</a></p>
       </div>
+       <div class="work-item">
+        <p class="title-cn"><a href="parentheses.html"> Series of reflective self portrait and moving images </a></p>
+      </div>
       <div class="work-item">
         <p class="title-cn"><a href="hisgarden.html">他的花园</a></p>
         <p class="title-en"><a href="hisgarden.html">His Garden</a></p>
-      </div>
-      <div class="work-item">
-        <p class="title-cn"><a href="feast.html">Feast</a></p>
-      </div>
-      <div class="work-item">
-        <p class="title-cn"><a href="rehearsal.html">[[rehearsal]]</a></p>
       </div>
       <div class="work-item">
         <p class="title-cn"><a href="disneybirthplace.html">A visit to Walt Disney's birthplace</a></p>
