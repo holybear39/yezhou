@@ -1657,39 +1657,46 @@ html[data-lang] .mag-dark .zh {
   }
 }
 
-/* ===== 影片页(hisgarden.html / lookaway.html):左文字 + 右图片,衬线字体 ===== */
+/* ===== 影片页(hisgarden.html / lookaway.html):按原设计还原
+   左边文字从页面 13% 处开始,右边图片约占页面 38% 宽;衬线字体 EB Garamond,行距很紧 ===== */
 @font-face { font-family: "EB Garamond"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/eb-garamond-latin-400-normal.woff2") format("woff2"); }
 @font-face { font-family: "EB Garamond"; font-style: italic; font-weight: 400; font-display: swap; src: url("fonts/eb-garamond-latin-400-italic.woff2") format("woff2"); }
 @font-face { font-family: "EB Garamond"; font-style: normal; font-weight: 600; font-display: swap; src: url("fonts/eb-garamond-latin-600-normal.woff2") format("woff2"); }
 @font-face { font-family: "EB Garamond"; font-style: normal; font-weight: 700; font-display: swap; src: url("fonts/eb-garamond-latin-700-normal.woff2") format("woff2"); }
 @font-face { font-family: "EB Garamond"; font-style: italic; font-weight: 700; font-display: swap; src: url("fonts/eb-garamond-latin-700-italic.woff2") format("woff2"); }
 
-.film {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  gap: 0 4vw;
-  max-width: 1150px;
-  margin: 0 auto 100px auto;
-  font-family: "EB Garamond", "Hoefler Text", Garamond, Georgia, "PingFang SC", "Microsoft YaHei", serif;
-  font-size: 17px;
-  line-height: 1.32;
-  color: #333;
+/* 影片页取消网站默认的页面宽度限制,让版面按整个窗口的比例排 */
+body.film-page {
+  max-width: none;
+  padding: 28px 0 80px 0;
 }
 
-.film-center {
-  align-items: center;
+.film-page .topbar {
+  margin: 0 13vw 34px 13vw;
+}
+
+.film {
+  display: grid;
+  grid-template-columns: 31vw 38vw;
+  column-gap: 3vw;
+  padding-left: 13vw;
+  font-family: "EB Garamond", "Hoefler Text", Garamond, Georgia, "PingFang SC", "Microsoft YaHei", serif;
+  font-size: 17.2px;
+  line-height: 1;
+  color: #3a3a3a;
 }
 
 .film-text p {
-  margin: 0 0 1.35em 0;
+  margin: 0 0 1em 0;
 }
 
 .film-text .film-gap {
-  margin-top: 2.4em;
+  margin-top: 2em;
 }
 
 .film-head {
-  margin-bottom: 1.6em !important;
+  line-height: 1.17;
+  margin-bottom: 1.45em !important;
 }
 
 .film-head b {
@@ -1702,63 +1709,92 @@ html[data-lang] .mag-dark .zh {
 
 .film-text u {
   text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
 }
 
 .film-lead {
-  margin-top: 0.4em;
-  font-size: 21px;
+  margin-top: 1.4em !important;
+  font-size: 20px;
   font-weight: 700;
-}
-
-.film-text .film-big {
-  margin: 0 0 0.3em 0;
-  font-size: 32px;
-  line-height: 1.25;
-  font-weight: 700;
-}
-
-.film-text .film-big.film-gap {
-  margin-top: 1.6em;
-}
-
-.film-big.italic {
-  font-weight: 400;
-  font-style: italic;
 }
 
 .film-media {
-  padding-top: 52px;
+  padding-top: 53px;
+}
+
+.film-media img {
+  display: block;
+  width: 100%;
+  margin: 0 0 69px 0;
+}
+
+/* 《她顾左右而言他》:文字和图片上下居中对齐,图片从页面一半处开始 */
+.film.film-center {
+  grid-template-columns: 34vw 37vw;
+  column-gap: 3.75vw;
+  padding-left: 12.25vw;
+  align-items: center;
 }
 
 .film-center .film-media {
   padding-top: 0;
 }
 
-.film-media img {
-  display: block;
-  width: 100%;
-  margin: 0 0 64px 0;
+.film-center .film-media img {
+  margin: 0;
+}
+
+.film-center .film-head {
+  line-height: 1.17;
+  margin-bottom: 0 !important;
 }
 
 .film-meta-gap {
-  margin-top: 1.9em !important;
+  margin-top: 1.35em !important;
 }
 
+.film-text .film-big {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.film-text .film-big.film-gap {
+  margin-top: 2.15em;
+}
+
+.film-text .film-big.italic {
+  margin-top: 0.5em;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* 手机:文字在上,图片在下 */
 @media (max-width: 760px) {
-  .film {
+  body.film-page {
+    padding: 28px 6vw 60px 6vw;
+  }
+  .film-page .topbar {
+    margin: 0 0 30px 0;
+  }
+  .film,
+  .film.film-center {
     grid-template-columns: 1fr;
+    padding-left: 0;
     font-size: 16.5px;
+    line-height: 1.1;
   }
   .film-media {
-    padding-top: 12px;
+    padding-top: 10px;
   }
   .film-media img {
     margin-bottom: 24px;
   }
-  .film-text .film-big {
-    font-size: 27px;
-  }
   .film-center .film-text {
-    margin-bottom: 20px;
+    margin-bottom: 28px;
+  }
+  .film-text .film-big {
+    font-size: 24px;
   }
 }
