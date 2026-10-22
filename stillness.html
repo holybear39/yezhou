@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stillness · 叶舟</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="page-center">
+
+  <div class="topbar">
+    <a class="back-link" href="index.html">&larr; 返回 / Back</a>
+    <div class="works-menu" id="works-menu"></div>
+  </div>
+
+  <h1 class="project-title-cn">Stillness</h1>
+  <p class="project-title-en">与表演艺术家 Kyriakos Apostolidis 的表演二人组，2022–2025<br>镜头与身体运动关系的研究<br>Performance Duo with Kyriakos Apostolidis, 2022–2025<br>A Study of Camera in Relation with Body Movement</p>
+
+  <div class="project-media">
+    <div class="slideshow">
+      <img id="slide-img" src="stillness/stillness-01.jpg" alt="Stillness">
+      <button class="slide-btn slide-prev" onclick="changeSlide(-1)">&#10094;</button>
+      <button class="slide-btn slide-next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+  </div>
+
+  <script>
+    const slides = [
+      "stillness/stillness-01.jpg",
+      "stillness/stillness-02.jpg"
+    ];
+    let current = 0;
+    let timer;
+
+    function showSlide(index) {
+      current = (index + slides.length) % slides.length;
+      document.getElementById('slide-img').src = slides[current];
+    }
+
+    function changeSlide(direction) {
+      showSlide(current + direction);
+      resetTimer();
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(function () { showSlide(current + 1); }, 3000);
+    }
+
+    resetTimer();
+  </script>
+
+  <p class="img-caption" style="text-align:center">（表演者在作品 STILLNESS 中进行 8 小时耐力表演的记录）<br>(Documentation of the performer’s 8 hour endurance performance in the work STILLNESS)</p>
+
+  <div class="project-description">
+    <p>“Stillness”分为三个阶段。第一阶段,表演者进行一个持续不断的耐力行动:在观众进入空间之前,双臂水平抬起,保持了 7 小时 45 分钟。第二阶段,观众见证这场表演。表演者佩戴脑电波传感器,形成一个自我反馈回路:生物数据被转换为振动,经由一个共振平台,再回传到表演者的身体,进而推动其基于动作的行为。与此同时,实时视频投影从不同角度呈现表演者的身体。第三阶段,表演者离开平台,成为观众的一部分。第一阶段开始时表演者踏上平台的视频记录被投影出来,将表演空间转变为一件视频装置。</p>
+    <p>“Stillness” was structured in three phases. In the first phase, the performer performed a continuously ongoing endurance action, holding their arms horizontally elevated for 7 hours and 45 minutes before the audience arrived in the space. In the second phase, the audience witnessed the performance. With the performer wearing a brainwave sensor, a self-feedback loop is created in which the bio-data are converted into vibrations, directed through a resonant platform and returned back-through the performer’s body to develop their movement-based action. At the same time, a real-time video projection presented the performer's body from different angles. In the third phase, the performer left from the platform, becoming part of the audience. The video documentation of the performer stepping on the platform at the beginning of the first phase projected, transforming the performance space into a video installation.</p>
+    <p><b>文档记录 / Documentation:</b><br>
+    <a href="https://drive.google.com/file/d/1bb84IcgUvwlgJDYW4XQBzWKEgtRkKtMF/view?usp=share_link" target="_blank" rel="noopener">Stillness(纽约版,New Uncanny Gallery) / Stillness (New York City Version, New Uncanny Gallery)</a></p>
+    <p>另见 / See also: <a href="livingmatter.html">Living Matter</a></p>
+  </div>
+
+  <script src="works-menu.js"></script>
+
+</body>
+</html>

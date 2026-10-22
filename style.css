@@ -1445,3 +1445,8 @@ html[data-lang] .mag-dark .zh {
     display: none;
   }
 }
+
+/* 作品介绍里的链接加下划线,看得出能点 */
+.project-description a {
+  text-decoration: underline;
+}
