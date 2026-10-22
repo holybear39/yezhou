@@ -1656,3 +1656,109 @@ html[data-lang] .mag-dark .zh {
     padding: 24px 16px;
   }
 }
+
+/* ===== 影片页(hisgarden.html / lookaway.html):左文字 + 右图片,衬线字体 ===== */
+@font-face { font-family: "EB Garamond"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/eb-garamond-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-style: italic; font-weight: 400; font-display: swap; src: url("fonts/eb-garamond-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-style: normal; font-weight: 600; font-display: swap; src: url("fonts/eb-garamond-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-style: normal; font-weight: 700; font-display: swap; src: url("fonts/eb-garamond-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-style: italic; font-weight: 700; font-display: swap; src: url("fonts/eb-garamond-latin-700-italic.woff2") format("woff2"); }
+
+.film {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 0 4vw;
+  max-width: 1150px;
+  margin: 0 auto 100px auto;
+  font-family: "EB Garamond", "Hoefler Text", Garamond, Georgia, "PingFang SC", "Microsoft YaHei", serif;
+  font-size: 17px;
+  line-height: 1.32;
+  color: #333;
+}
+
+.film-center {
+  align-items: center;
+}
+
+.film-text p {
+  margin: 0 0 1.35em 0;
+}
+
+.film-text .film-gap {
+  margin-top: 2.4em;
+}
+
+.film-head {
+  margin-bottom: 1.6em !important;
+}
+
+.film-head b {
+  font-weight: 600;
+}
+
+.film-text strong {
+  font-weight: 700;
+}
+
+.film-text u {
+  text-underline-offset: 2px;
+}
+
+.film-lead {
+  margin-top: 0.4em;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.film-text .film-big {
+  margin: 0 0 0.3em 0;
+  font-size: 32px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.film-text .film-big.film-gap {
+  margin-top: 1.6em;
+}
+
+.film-big.italic {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.film-media {
+  padding-top: 52px;
+}
+
+.film-center .film-media {
+  padding-top: 0;
+}
+
+.film-media img {
+  display: block;
+  width: 100%;
+  margin: 0 0 64px 0;
+}
+
+.film-meta-gap {
+  margin-top: 1.9em !important;
+}
+
+@media (max-width: 760px) {
+  .film {
+    grid-template-columns: 1fr;
+    font-size: 16.5px;
+  }
+  .film-media {
+    padding-top: 12px;
+  }
+  .film-media img {
+    margin-bottom: 24px;
+  }
+  .film-text .film-big {
+    font-size: 27px;
+  }
+  .film-center .film-text {
+    margin-bottom: 20px;
+  }
+}
