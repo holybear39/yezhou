@@ -1331,3 +1331,117 @@ html[data-lang] .mag-dark .zh {
     font-size: 16.5px;
   }
 }
+
+/* ===== 翻书页(writing-remarks.html):PDF 原样翻页 ===== */
+.flip-meta {
+  margin: 0 0 24px 0;
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+}
+
+.flip-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1300px;
+  height: min(78vh, 900px);
+  min-height: 420px;
+  margin: 0 auto;
+  background: #f4f4f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.flip-book {
+  margin: 0 auto;
+}
+
+.flip-loading {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  color: #999;
+  pointer-events: none;
+}
+
+.flip-stage:fullscreen {
+  height: 100vh;
+  max-width: none;
+  background: #1a1a1a;
+}
+
+.flip-stage.flip-fake-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 300;
+  height: 100%;
+  max-width: none;
+  background: #1a1a1a;
+}
+
+.flip-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin: 18px 0 8px 0;
+  font-size: 14px;
+}
+
+.flip-controls button {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 7px 14px;
+  color: #111;
+  background: #fff;
+  border: 1px solid #111;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.flip-controls button:hover {
+  color: #fff;
+  background: #111;
+}
+
+.flip-controls .flip-full {
+  margin-left: 18px;
+}
+
+.flip-hint {
+  margin: 6px 0;
+  text-align: center;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: #777;
+}
+
+.flip-hint a {
+  text-decoration: underline;
+}
+
+.lang-switch-link {
+  align-self: center;
+  margin-left: 10px;
+  font-size: 13px;
+  text-decoration: underline;
+  color: #555;
+}
+
+@media (max-width: 700px) {
+  .flip-stage {
+    height: 72vh;
+    min-height: 380px;
+  }
+  .lang-switch-link {
+    display: none;
+  }
+}
