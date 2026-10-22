@@ -1,1 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Series of reflective self portrait and moving images · 叶舟</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="page-center">
 
+  <div class="topbar">
+    <a class="back-link" href="index.html">&larr; 返回 / Back</a>
+    <div class="works-menu" id="works-menu"></div>
+  </div>
+
+  <h1 class="project-title-cn">Series of reflective self portrait and moving images</h1>
+  <!-- 想加中文标题或年份:把下一行开头和结尾的注释符号删掉,再改文字 -->
+  <!-- <p class="project-title-en">中文标题,2024–2025</p> -->
+
+  <div class="project-description pv-intro">
+    <p>在这里写整个系列的中文介绍。</p>
+    <p>Write the English introduction of the series here.</p>
+  </div>
+
+  <!-- ==================================================================
+       每个 <section class="pv-section"> ... </section> = 一个段落(一件作品)。
+       想加一段:把一整个 section 复制一份,改 4 个地方:
+         1. data-title="..."   作品名(会自动写进别人发给你的请求里)
+         2. <img src="...">     这件作品的图片路径
+         3. pv-title / pv-meta  标题和信息(年份、时长、媒介)
+         4. pv-text             简介
+       下面的「发送请求」表单不用改,脚本会自动加到每一段里。
+       ================================================================== -->
+
+  <section class="pv-section" data-title="作品一 / Work 1">
+    <figure class="pv-media">
+      <img src="parentheses-01.jpg" alt="作品一">
+    </figure>
+    <div class="pv-body">
+      <h2 class="pv-title">作品一 / Work 1</h2>
+      <p class="pv-meta">2024 · 单频道影像 Single Channel Video · 00:00</p>
+      <p class="pv-text">在这里写这件作品的简介。<br>A short description of this work.</p>
+    </div>
+  </section>
+
+  <section class="pv-section" data-title="作品二 / Work 2">
+    <figure class="pv-media">
+      <img src="parentheses/parentheses-02.jpg" alt="作品二">
+    </figure>
+    <div class="pv-body">
+      <h2 class="pv-title">作品二 / Work 2</h2>
+      <p class="pv-meta">2024 · 单频道影像 Single Channel Video · 00:00</p>
+      <p class="pv-text">在这里写这件作品的简介。<br>A short description of this work.</p>
+    </div>
+  </section>
+
+  <section class="pv-section" data-title="作品三 / Work 3">
+    <figure class="pv-media">
+      <img src="parentheses/parentheses-03.jpg" alt="作品三">
+    </figure>
+    <div class="pv-body">
+      <h2 class="pv-title">作品三 / Work 3</h2>
+      <p class="pv-meta">2025 · 单频道影像 Single Channel Video · 00:00</p>
+      <p class="pv-text">在这里写这件作品的简介。<br>A short description of this work.</p>
+    </div>
+  </section>
+
+  <!-- ========== 支持我 / Support ========== -->
+  <div class="pv-support" id="support">
+    <h2 class="pv-support-title">支持我 / Support my practice</h2>
+    <p>如果你喜欢这些作品,欢迎扫码支持 ¥20,或通过 PayPal 支持 $5。付款时请备注作品名和你的邮箱,我会把完整视频的观看链接发给你。</p>
+    <p class="pv-en">If you enjoy the work, you are welcome to support it with ¥20 via WeChat or $5 via PayPal. Please note the title of the work and your email with the payment, and I will send you a viewing link to the full video.</p>
+    <div class="pv-support-ways">
+      <figure class="pv-qr" id="pv-qr">
+        <img id="pv-qr-img" alt="微信赞赏码 WeChat">
+        <figcaption>微信扫码 · WeChat</figcaption>
+      </figure>
+      <a class="pv-paypal" id="pv-paypal" target="_blank" rel="noopener">PayPal · $5</a>
+    </div>
+    <p class="pv-small">策展、研究、影展选片请直接在上面的作品旁「发送请求」,免费。<br>Curators, researchers and festival programmers: please send a request next to the work above, free of charge.</p>
+  </div>
+
+  <script>
+    // ================= 设置:只需要改这里 =================
+    // 你的邮箱(收请求用)
+    const EMAIL = 'holybear39@gmail.com';
+
+    // (可选)Web3Forms 的 Access Key。留空 '' 时,点「发送」会打开访客自己的邮件软件,完全免费、不用注册。
+    // 去 web3forms.com 填邮箱就能免费拿到一串 key,贴进来后,访客就能直接在网页里发送,你会收到邮件。
+    const WEB3FORMS_KEY = '';
+
+    // 微信赞赏码 / 收款码图片路径(上传图片后改成实际路径;图片不存在时这一块会自动隐藏)
+    const QR_IMAGE = 'parentheses/support-qr.jpg';
+
+    // PayPal 链接,例如 'https://paypal.me/你的用户名/5'(留空 '' 时按钮自动隐藏)
+    const PAYPAL_LINK = '';
+    // =====================================================
+
+    // ---------- 以下是功能代码,不用改 ----------
+    (function () {
+      // 支持区:二维码和 PayPal
+      const qr = document.getElementById('pv-qr');
+      const qrImg = document.getElementById('pv-qr-img');
+      qrImg.onerror = function () { qr.style.display = 'none'; };
+      if (QR_IMAGE) qrImg.src = QR_IMAGE; else qr.style.display = 'none';
+
+      const pp = document.getElementById('pv-paypal');
+      if (PAYPAL_LINK) pp.href = PAYPAL_LINK; else pp.style.display = 'none';
+
+      // 图片不存在时不显示破图
+      document.querySelectorAll('.pv-media img').forEach(function (img) {
+        img.addEventListener('error', function () { img.closest('.pv-media').classList.add('pv-missing'); });
+      });
+
+      // 给每一段加上「发送请求」表单
+      document.querySelectorAll('.pv-section').forEach(function (section) {
+        const title = section.getAttribute('data-title') || '';
+        const box = document.createElement('div');
+        box.className = 'pv-request';
+        box.innerHTML =
+          '<p class="pv-request-label">想看完整视频?发送请求<span>Want to view the complete video? Send a request</span></p>' +
+          '<form>' +
+            '<input type="email" name="email" required placeholder="你的邮箱 / Your email">' +
+            '<textarea name="message" rows="3" placeholder="想说的话(可选):你是谁、在哪里看到这件作品… / A note (optional)"></textarea>' +
+            '<input type="checkbox" name="botcheck" class="pv-hp" tabindex="-1" autocomplete="off">' +
+            '<div class="pv-actions">' +
+              '<button type="submit">发送请求 / Send</button>' +
+              '<a href="#support" class="pv-support-link">或 支持我 ¥20 · $5 / or support</a>' +
+            '</div>' +
+            '<p class="pv-status" aria-live="polite"></p>' +
+          '</form>';
+        section.querySelector('.pv-body').appendChild(box);
+
+        const form = box.querySelector('form');
+        const status = box.querySelector('.pv-status');
+        const btn = box.querySelector('button');
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const email = form.email.value.trim();
+          const message = form.message.value.trim();
+          const subject = '观看请求 Viewing request: ' + title;
+
+          if (!WEB3FORMS_KEY) {
+            // 免费方式:打开访客自己的邮件软件,内容已经填好
+            const body = '作品 / Work: ' + title + '\n邮箱 / Email: ' + email + '\n\n' + message;
+            window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+            status.textContent = '已打开你的邮件软件,点发送即可。没反应的话,请直接写信到 ' + EMAIL + ' / Your mail app should open. If not, write to ' + EMAIL;
+            return;
+          }
+
+          if (form.botcheck.checked) return;   // 机器人
+          btn.disabled = true;
+          status.textContent = '发送中… / Sending…';
+          fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+              access_key: WEB3FORMS_KEY,
+              subject: subject,
+              from_name: 'zhengyezhou.site',
+              email: email,
+              work: title,
+              message: message || '(无留言 / no message)'
+            })
+          })
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+              if (!data.success) throw new Error(data.message || 'failed');
+              form.reset();
+              status.textContent = '已收到,我会尽快把观看链接发到你的邮箱。谢谢! / Received — I will email you a viewing link soon. Thank you!';
+            })
+            .catch(function () {
+              status.innerHTML = '发送失败,请直接写信到 <a href="mailto:' + EMAIL + '">' + EMAIL + '</a> / Sending failed, please email me directly.';
+            })
+            .finally(function () { btn.disabled = false; });
+        });
+      });
+    })();
+  </script>
+
+  <script src="works-menu.js"></script>
+
+</body>
+</html>

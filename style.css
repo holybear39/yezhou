@@ -1450,3 +1450,209 @@ html[data-lang] .mag-dark .zh {
 .project-description a {
   text-decoration: underline;
 }
+
+/* ===== 影像系列页(parentheses.html):分段 + 发送请求 + 支持我 ===== */
+.pv-intro {
+  margin: 0 auto 56px auto;
+}
+
+.pv-section {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 36px;
+  align-items: start;
+  max-width: 1000px;
+  margin: 0 auto 72px auto;
+  padding-top: 28px;
+  border-top: 1px solid #e2e2e2;
+}
+
+.pv-media {
+  margin: 0;
+}
+
+.pv-media img {
+  display: block;
+  width: 100%;
+}
+
+.pv-media.pv-missing {
+  aspect-ratio: 16 / 9;
+  background: #f2f2f2;
+}
+
+.pv-media.pv-missing img {
+  display: none;
+}
+
+.pv-title {
+  margin: 0 0 6px 0;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.pv-meta {
+  margin: 0 0 14px 0;
+  font-size: 13px;
+  color: #777;
+}
+
+.pv-text {
+  margin: 0 0 22px 0;
+}
+
+.pv-request {
+  padding: 16px;
+  background: #f6f6f4;
+}
+
+.pv-request-label {
+  margin: 0 0 10px 0;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.pv-request-label span {
+  display: block;
+  font-weight: 400;
+  font-size: 12.5px;
+  color: #666;
+}
+
+.pv-request input[type="email"],
+.pv-request textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0 8px 0;
+  padding: 9px 10px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #111;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0;
+}
+
+.pv-request textarea {
+  resize: vertical;
+}
+
+.pv-request .pv-hp {
+  display: none;
+}
+
+.pv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+}
+
+.pv-actions button {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 8px 16px;
+  color: #fff;
+  background: #111;
+  border: 1px solid #111;
+  cursor: pointer;
+}
+
+.pv-actions button:disabled {
+  opacity: 0.5;
+}
+
+.pv-support-link {
+  font-size: 13px;
+  text-decoration: underline;
+  color: #555;
+}
+
+.pv-status {
+  margin: 8px 0 0 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.pv-status a {
+  text-decoration: underline;
+}
+
+.pv-support {
+  max-width: 700px;
+  margin: 24px auto 80px auto;
+  padding: 32px 28px;
+  text-align: center;
+  border: 1px solid #111;
+}
+
+.pv-support-title {
+  margin: 0 0 14px 0;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.pv-support p {
+  margin: 0 0 10px 0;
+}
+
+.pv-support .pv-en {
+  font-size: 14px;
+  color: #555;
+}
+
+.pv-support-ways {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 24px 40px;
+  margin: 22px 0;
+}
+
+.pv-qr {
+  margin: 0;
+}
+
+.pv-qr img {
+  display: block;
+  width: 180px;
+  height: auto;
+}
+
+.pv-qr figcaption {
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: #666;
+}
+
+.pv-paypal {
+  padding: 10px 22px;
+  border: 1px solid #111;
+  border-radius: 999px;
+}
+
+.pv-paypal:hover {
+  color: #fff;
+  background: #111;
+}
+
+.pv-support .pv-small {
+  margin-top: 8px;
+  font-size: 12.5px;
+  color: #777;
+}
+
+@media (max-width: 700px) {
+  .pv-section {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-bottom: 56px;
+  }
+  .pv-support {
+    padding: 24px 16px;
+  }
+}
