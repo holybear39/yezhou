@@ -19,7 +19,7 @@
 
   <!-- 翻书区域(页面图片由下面的脚本放进去) -->
   <div class="flip-stage" id="flip-stage">
-    <div class="flip-book" id="flip-book"></div>
+    
     <p class="flip-loading" id="flip-loading">加载中 / Loading…</p>
   </div>
 
@@ -36,40 +36,65 @@
   <script>
     (function () {
       var TOTAL = 41;                                   // 总页数
-      var DIR = 'images/writing-remarks/flipbook/';
-      var pages = [];
-      for (var i = 1; i <= TOTAL; i++) pages.push(DIR + 'p-' + (i < 10 ? '0' + i : i) + '.jpg');
+      // 平时用「标准版」(加载快);点全屏时自动换成「超清版」(小字更清楚)
+      var DIR_STD = 'flipbook/';
+      var DIR_HD  = 'flipbook-hd/';
+      function list(dir) {
+        var a = [];
+        for (var i = 1; i <= TOTAL; i++) a.push(dir + 'p-' + (i < 10 ? '0' + i : i) + '.webp');
+        return a;
+      }
 
       var stage = document.getElementById('flip-stage');
-      var bookEl = document.getElementById('flip-book');
       var count = document.getElementById('flip-count');
+      var flip = null, hdOn = false;
 
-      var flip = new St.PageFlip(bookEl, {
-        width: 600, height: 849,            // 单页比例 = A4
-        size: 'stretch',
-        minWidth: 280, maxWidth: 900,
-        minHeight: 396, maxHeight: 1273,
-        showCover: true,                    // 第 1 页是封面,单独显示
-        maxShadowOpacity: 0.45,
-        drawShadow: true,
-        flippingTime: 800,
-        usePortrait: true,                  // 窄屏(手机)自动变成单页
-        mobileScrollSupport: false,
-        autoSize: true
-      });
-      flip.loadFromImages(pages);
+      function build(dir, startPage) {
+        if (flip) { try { flip.destroy(); } catch (e) {} }
+        var old = document.getElementById('flip-book');
+        if (old) old.remove();
+        var el = document.createElement('div');
+        el.id = 'flip-book';
+        el.className = 'flip-book';
+        stage.insertBefore(el, stage.firstChild);
+
+        flip = new St.PageFlip(el, {
+          width: 600, height: 849,            // 单页比例 = A4
+          size: 'stretch',
+          minWidth: 280, maxWidth: 1100,
+          minHeight: 396, maxHeight: 1556,
+          showCover: true,                    // 第 1 页是封面,单独显示
+          maxShadowOpacity: 0.45,
+          drawShadow: true,
+          flippingTime: 800,
+          usePortrait: true,                  // 窄屏(手机)自动变成单页
+          mobileScrollSupport: false,
+          autoSize: true,
+          startPage: startPage || 0
+        });
+        flip.loadFromImages(list(dir));
+        flip.on('flip', update);
+        flip.on('init', update);
+        flip.on('changeOrientation', update);
+        setTimeout(update, 600);
+      }
 
       function update() {
+        if (!flip) return;
         var n = flip.getCurrentPageIndex() + 1;
         var shown = n;
         if (flip.getOrientation() === 'landscape' && n > 1 && n % 2 === 0 && n < TOTAL) shown = n + '–' + (n + 1);
         count.textContent = shown + ' / ' + TOTAL;
         document.getElementById('flip-loading').style.display = 'none';
       }
-      flip.on('flip', update);
-      flip.on('init', update);
-      flip.on('changeOrientation', update);
-      setTimeout(update, 600);
+
+      function useHD(on) {
+        if (on === hdOn) return;
+        hdOn = on;
+        build(on ? DIR_HD : DIR_STD, flip ? flip.getCurrentPageIndex() : 0);
+      }
+
+      build(DIR_STD, 0);
 
       document.getElementById('flip-prev').addEventListener('click', function () { flip.flipPrev(); });
       document.getElementById('flip-next').addEventListener('click', function () { flip.flipNext(); });
@@ -81,15 +106,21 @@
       // 全屏
       var fullBtn = document.getElementById('flip-full');
       fullBtn.addEventListener('click', function () {
-        if (document.fullscreenElement) { document.exitFullscreen(); return; }
-        var el = stage;
-        if (el.requestFullscreen) el.requestFullscreen();
-        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-        else stage.classList.toggle('flip-fake-full');   // 不支持全屏的浏览器(如 iPhone)用铺满页面代替
+        if (document.fullscreenElement || stage.classList.contains('flip-fake-full')) {
+          if (document.fullscreenElement) document.exitFullscreen();
+          stage.classList.remove('flip-fake-full');
+          useHD(false);
+          fullBtn.textContent = '全屏 Fullscreen';
+          return;
+        }
+        if (stage.requestFullscreen) stage.requestFullscreen();
+        else if (stage.webkitRequestFullscreen) stage.webkitRequestFullscreen();
+        else { stage.classList.add('flip-fake-full'); useHD(true); fullBtn.textContent = '退出全屏 Exit'; }
       });
       document.addEventListener('fullscreenchange', function () {
-        fullBtn.textContent = document.fullscreenElement ? '退出全屏 Exit' : '全屏 Fullscreen';
-        setTimeout(function () { window.dispatchEvent(new Event('resize')); }, 150);
+        var on = !!document.fullscreenElement;
+        fullBtn.textContent = on ? '退出全屏 Exit' : '全屏 Fullscreen';
+        useHD(on);
       });
     })();
   </script>
