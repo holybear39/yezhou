@@ -3,141 +3,248 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CV · Yejo</title>
+<title>CV · 叶舟 Yejo</title>
 <link rel="stylesheet" href="style.css">
+<script>
+  // 默认简体中文;如果访客上次选了英文,就记住英文(避免页面闪一下)
+  (function () {
+    var l = 'zh';
+    try { if (localStorage.getItem('cv-lang') === 'en') l = 'en'; } catch (e) {}
+    document.documentElement.setAttribute('data-lang', l);
+  })();
+</script>
 </head>
 <body>
 
   <a class="back-link" href="index.html">&larr; 返回 / Back</a>
 
-  <h1 class="project-title-cn">Yejo</h1>
+  <!-- 语言切换按钮 -->
+  <div class="lang-switch" role="group" aria-label="语言 / Language">
+    <button type="button" data-lang="zh" aria-pressed="true">简体中文 Simplified Chinese</button>
+    <button type="button" data-lang="en" aria-pressed="false">英文 English</button>
+  </div>
+
+  <!-- 每一项都写两遍:class 里带 zh 的是中文,带 en 的是英文。新增一项时,复制一整个 <div class="cv-entry"> ... </div> -->
+
+  <h1 class="project-title-cn"><span class="zh">叶舟</span><span class="en">Yejo</span></h1>
 
   <div class="cv-meta">
-    <p><strong>Phone:</strong> +86 19518136149</p>
-    <p><strong>Email:</strong> <a href="mailto:holybear39@gmail.com">holybear39@gmail.com</a></p>
+    <p><strong><span class="zh">电话：</span><span class="en">Phone:</span></strong> +86 19518136149</p>
+    <p><strong><span class="zh">邮箱：</span><span class="en">Email:</span></strong> <a href="mailto:holybear39@gmail.com">holybear39@gmail.com</a></p>
   </div>
 
   <div class="cv-entry">
-    <p class="cv-venue">Mobius M Art Space, Chicago as a Method, Group show, Beijing</p>
-    <p class="cv-title">她顾左右而言他</p>
-    <p class="cv-date">July 1 – July 15, 2026</p>
+    <p class="cv-venue zh">《芝加哥作为方法》，群展，莫比乌斯M艺术空间（北京）</p>
+    <p class="cv-venue en">Mobius M Art Space, Chicago as a Method, Group show, Beijing</p>
+    <p class="cv-title zh">展览：《她顾左右而言他》</p>
+    <p class="cv-title en">She Looks Around and Starts Babbling About Him</p>
+    <p class="cv-detail zh">单屏影像</p>
+    <p class="cv-detail en">Single Channel Video</p>
+    <p class="cv-date zh">2026年7月1日 – 7月15日</p>
+    <p class="cv-date en">July 1 – July 15, 2026</p>
   </div>
 
   <div class="cv-entry">
-    <p class="cv-venue">Barefoot Local Art Festival, Xiamen</p>
-    <p class="cv-title">Leave your island like a fish</p>
-    <p class="cv-detail">Participatory Installation</p>
-    <p class="cv-date">May 15 – May 17, 2026</p>
+    <p class="cv-venue zh">赤脚地方艺术节2026（厦门）</p>
+    <p class="cv-venue en">Barefoot Local Art Festival, Xiamen</p>
+    <p class="cv-title zh">展览：《变成鱼离开你的岛》</p>
+    <p class="cv-title en">Leave your island like a fish</p>
+    <p class="cv-detail zh">参与式装置作品</p>
+    <p class="cv-detail en">Participatory Installation</p>
+    <p class="cv-date zh">2026年5月15日 – 5月17日</p>
+    <p class="cv-date en">May 15 – May 17, 2026</p>
   </div>
 
   <div class="cv-entry">
-    <p class="cv-venue">abC Art Market, Wenzhou</p>
-    <p class="cv-title">Imaginaries of an Island #3</p>
-    <p class="cv-detail">Sculptural Installation</p>
-    <p class="cv-date">May 1 – May 5, 2026</p>
+    <p class="cv-venue zh">abC 诶笔希 看一眼艺术市集（温州）</p>
+    <p class="cv-venue en">abC Art Market, Wenzhou</p>
+    <p class="cv-title zh">展览：《Imaginaries of an Island #3》</p>
+    <p class="cv-title en">Imaginaries of an Island #3</p>
+    <p class="cv-detail zh">雕塑装置作品</p>
+    <p class="cv-detail en">Sculptural Installation</p>
+    <p class="cv-date zh">2026年5月1日 – 5月5日</p>
+    <p class="cv-date en">May 1 – May 5, 2026</p>
   </div>
 
   <div class="cv-entry">
-    <p class="cv-venue">Wenzhou Kean University</p>
-    <p class="cv-title">Imaginaries of an Island #2</p>
-    <p class="cv-detail">Workshop and Sculptural Installation</p>
-    <p class="cv-date">December 2, 2025 – February 28, 2026</p>
+    <p class="cv-venue zh">温州肯恩大学（Wenzhou Kean University）</p>
+    <p class="cv-venue en">Wenzhou Kean University</p>
+    <p class="cv-title zh">展览：《Imaginaries of an Island #2》</p>
+    <p class="cv-title en">Imaginaries of an Island #2</p>
+    <p class="cv-detail zh">工作坊与雕塑装置作品</p>
+    <p class="cv-detail en">Workshop and Sculptural Installation</p>
+    <p class="cv-date zh">2025年12月2日 – 2026年2月28日</p>
+    <p class="cv-date en">December 2, 2025 – February 28, 2026</p>
   </div>
 
   <div class="cv-entry">
-    <p class="cv-venue">El Taller Bogotá, Colombia</p>
-    <p class="cv-title">Muestradislocada Screening (Colombian Section)</p>
-    <p class="cv-detail">Screening of the video performance <em>Feast</em> (with Marco Guagneilli and Sol Lee)</p>
-    <p class="cv-date">November 7, 2025</p>
+    <p class="cv-venue zh">El Taller Bogotá（哥伦比亚）</p>
+    <p class="cv-venue en">El Taller Bogotá, Colombia</p>
+    <p class="cv-title zh">放映：Muestradislocada Screening（哥伦比亚单元）</p>
+    <p class="cv-title en">Muestradislocada Screening (Colombian Section)</p>
+    <p class="cv-detail zh">作品：影像表演《Feast》（与 Marco Guagneilli、Sol Lee 合作）</p>
+    <p class="cv-detail en">Screening of the video performance <em>Feast</em> (with Marco Guagneilli and Sol Lee)</p>
+    <p class="cv-date zh">2025年11月7日</p>
+    <p class="cv-date en">November 7, 2025</p>
   </div>
 
   <div class="cv-entry">
-    <p class="cv-venue">Hong Museum, Wenzhou</p>
-    <p class="cv-title">Interlude (Curatorial Performance Night)</p>
-    <p class="cv-detail">Collaborative performance with Juan Flores and Camille Casemier</p>
-    <p class="cv-date">August 17, 2025</p>
+    <p class="cv-venue zh">温州弘美术馆（Wenzhou Hong Museum）</p>
+    <p class="cv-venue en">Hong Museum, Wenzhou</p>
+    <p class="cv-title zh">策展表演之夜《Interlude》</p>
+    <p class="cv-title en">Interlude (Curatorial Performance Night)</p>
+    <p class="cv-detail zh">与 Juan Flores、Camille Casemier 共同呈现</p>
+    <p class="cv-detail en">Collaborative performance with Juan Flores and Camille Casemier</p>
+    <p class="cv-date zh">2025年8月17日</p>
+    <p class="cv-date en">August 17, 2025</p>
   </div>
 
   <div class="cv-entry">
-    <p class="cv-venue">Hong Museum, Wenzhou</p>
-    <p class="cv-title">Solo Exhibition: Imaginaries of an Island #1</p>
-    <p class="cv-detail">Workshop and Sculptural Installation</p>
-    <p class="cv-date">August 25 – September 26, 2025</p>
+    <p class="cv-venue zh">温州弘美术馆</p>
+    <p class="cv-venue en">Hong Museum, Wenzhou</p>
+    <p class="cv-title zh">个展：《Imaginaries of an Island #1》</p>
+    <p class="cv-title en">Solo Exhibition: Imaginaries of an Island #1</p>
+    <p class="cv-detail zh">工作坊与雕塑装置作品</p>
+    <p class="cv-detail en">Workshop and Sculptural Installation</p>
+    <p class="cv-date zh">2025年8月25日 – 9月26日</p>
+    <p class="cv-date en">August 25 – September 26, 2025</p>
   </div>
 
   <div class="cv-entry">
-    <p class="cv-venue">Nonation Art Space, Chicago</p>
-    <p class="cv-title">MANEUVER SITES AND OTHER GAPS</p>
-    <p class="cv-detail">Group Exhibition. Invited collaboration with Greek performance artist Kyriyakos Apostolidis</p>
-    <p class="cv-date">November 27, 2024</p>
+    <p class="cv-venue zh">Nonation 艺术实验空间（芝加哥）</p>
+    <p class="cv-venue en">Nonation Art Space, Chicago</p>
+    <p class="cv-title zh">群展：《MANEUVER SITES AND OTHER GAPS》</p>
+    <p class="cv-title en">MANEUVER SITES AND OTHER GAPS</p>
+    <p class="cv-detail zh">受邀与希腊行为艺术家 Kyriakos Apostolidis 合作表演</p>
+    <p class="cv-detail en">Group Exhibition. Invited collaboration with Greek performance artist Kyriakos Apostolidis</p>
+    <p class="cv-date zh">2024年11月27日</p>
+    <p class="cv-date en">November 27, 2024</p>
   </div>
 
   <div class="cv-entry">
-    <p class="cv-venue">NewUncanny Gallery, New York</p>
-    <p class="cv-title">Torsos In Rain</p>
-    <p class="cv-detail">Group Exhibition. Invited presentation of the performance <em>Stillness</em></p>
-    <p class="cv-date">September 14, 2024</p>
+    <p class="cv-venue zh">NewUncanny Gallery（纽约）</p>
+    <p class="cv-venue en">NewUncanny Gallery, New York</p>
+    <p class="cv-title zh">群展：《Torsos In Rain》</p>
+    <p class="cv-title en">Torsos In Rain</p>
+    <p class="cv-detail zh">受邀呈现表演作品《Stillness》</p>
+    <p class="cv-detail en">Group Exhibition. Invited presentation of the performance <em>Stillness</em></p>
+    <p class="cv-date zh">2024年9月14日</p>
+    <p class="cv-date en">September 14, 2024</p>
   </div>
 
   <div class="cv-entry">
-    <p class="cv-venue">University of Chicago Performance and Video Art Symposium</p>
-    <p class="cv-title">SHE LOOKS AROUND AND STARTS TO BABBLING ABOUT HIM</p>
-    <p class="cv-detail">Short Film Screening</p>
-    <p class="cv-date">September 29, 2024</p>
+    <p class="cv-venue zh">芝加哥大学表演视频艺术研讨会</p>
+    <p class="cv-venue en">University of Chicago Performance and Video Art Symposium</p>
+    <p class="cv-title zh">《SHE LOOKS AROUND AND STARTS TO BABBLING ABOUT HIM》</p>
+    <p class="cv-title en">SHE LOOKS AROUND AND STARTS TO BABBLING ABOUT HIM</p>
+    <p class="cv-detail zh">短片放映</p>
+    <p class="cv-detail en">Short Film Screening</p>
+    <p class="cv-date zh">2024年9月29日</p>
+    <p class="cv-date en">September 29, 2024</p>
   </div>
 
   <div class="cv-entry">
-    <p class="cv-venue">Chinese American Museum of Chicago (CAMOC)</p>
-    <p class="cv-detail">Group Exhibition. Video Installation: <em>CLOCK</em></p>
-    <p class="cv-date">May 25, 2024</p>
+    <p class="cv-venue zh">芝加哥华人博物馆（CAMOC）</p>
+    <p class="cv-venue en">Chinese American Museum of Chicago (CAMOC)</p>
+    <p class="cv-detail zh">群展：影像装置《CLOCK》</p>
+    <p class="cv-detail en">Group Exhibition. Video Installation: <em>CLOCK</em></p>
+    <p class="cv-date zh">2024年5月25日</p>
+    <p class="cv-date en">May 25, 2024</p>
   </div>
 
   <div class="cv-entry">
-    <p class="cv-venue">CICA Museum, Seoul</p>
-    <p class="cv-detail">Group Exhibition. Invited presentation of the video performance <em>Feast</em></p>
-    <p class="cv-date">April 18, 2024</p>
+    <p class="cv-venue zh">CICA 美术馆（首尔）</p>
+    <p class="cv-venue en">CICA Museum, Seoul</p>
+    <p class="cv-detail zh">群展<br>受邀呈现影像表演《Feast》</p>
+    <p class="cv-detail en">Group Exhibition. Invited presentation of the video performance <em>Feast</em></p>
+    <p class="cv-date zh">2024年4月18日</p>
+    <p class="cv-date en">April 18, 2024</p>
   </div>
 
   <div class="cv-entry">
-    <p class="cv-venue">6018North, Chicago</p>
-    <p class="cv-title">Dragon Raises Its Head</p>
-    <p class="cv-detail">Art Event</p>
-    <p class="cv-date">April 18, 2024</p>
+    <p class="cv-venue zh">6018North Gallery（芝加哥）</p>
+    <p class="cv-venue en">6018North, Chicago</p>
+    <p class="cv-title zh">艺术活动：《Dragon Raises Its Head》</p>
+    <p class="cv-title en">Dragon Raises Its Head</p>
+    <p class="cv-detail en">Art Event</p>
+    <p class="cv-date zh">2024年4月18日</p>
+    <p class="cv-date en">April 18, 2024</p>
   </div>
 
   <div class="cv-entry">
-    <p class="cv-venue">John David Mooney Foundation, Chicago</p>
-    <p class="cv-detail">Performance as part of the collective project <em>[rehearsal]</em></p>
-    <p class="cv-date">November 18, 2023</p>
+    <p class="cv-venue zh">John David Mooney Foundation（芝加哥）</p>
+    <p class="cv-venue en">John David Mooney Foundation, Chicago</p>
+    <p class="cv-detail zh">行为表演（[rehearsal] 集体项目）</p>
+    <p class="cv-detail en">Performance as part of the collective project <em>[rehearsal]</em></p>
+    <p class="cv-date zh">2023年11月18日</p>
+    <p class="cv-date en">November 18, 2023</p>
   </div>
 
   <div class="cv-entry">
-    <p class="cv-venue">FAA Art Action Festival, Mexico City</p>
-    <p class="cv-title">Living Matter</p>
-    <p class="cv-detail">Performance</p>
-    <p class="cv-date">November 23, 2023</p>
+    <p class="cv-venue zh">FAA 艺术行动节（墨西哥城）</p>
+    <p class="cv-venue en">FAA Art Action Festival, Mexico City</p>
+    <p class="cv-title zh">表演：《Living Matter》</p>
+    <p class="cv-title en">Living Matter</p>
+    <p class="cv-detail en">Performance</p>
+    <p class="cv-date zh">2023年11月23日</p>
+    <p class="cv-date en">November 23, 2023</p>
   </div>
 
   <div class="cv-entry">
-    <p class="cv-venue">Comfort Station, Chicago</p>
-    <p class="cv-title">HomeRoom Comfort Music Plus</p>
-    <p class="cv-detail">Performance</p>
-    <p class="cv-date">April 6, 2023</p>
+    <p class="cv-venue zh">Comfort Station（芝加哥）</p>
+    <p class="cv-venue en">Comfort Station, Chicago</p>
+    <p class="cv-title zh">HomeRoom Comfort Music Plus 表演</p>
+    <p class="cv-title en">HomeRoom Comfort Music Plus</p>
+    <p class="cv-detail en">Performance</p>
+    <p class="cv-date zh">2023年4月6日</p>
+    <p class="cv-date en">April 6, 2023</p>
   </div>
 
   <div class="cv-entry">
-    <p class="cv-venue">Nonation Art Lab, Chicago</p>
-    <p class="cv-title">Noktuna Performance Art Night</p>
-    <p class="cv-detail">Performance</p>
-    <p class="cv-date">March 31, 2023</p>
+    <p class="cv-venue zh">Nonation 艺术实验空间（芝加哥）</p>
+    <p class="cv-venue en">Nonation Art Lab, Chicago</p>
+    <p class="cv-title zh">Noktuna 行为艺术夜</p>
+    <p class="cv-title en">Noktuna Performance Art Night</p>
+    <p class="cv-detail en">Performance</p>
+    <p class="cv-date zh">2023年3月31日</p>
+    <p class="cv-date en">March 31, 2023</p>
   </div>
 
-  <p class="cv-section-title">Grants and Residencies</p>
-  <ul class="cv-list">
+  <p class="cv-section-title"><span class="zh">资助与驻留</span><span class="en">Grants and Residencies</span></p>
+  <ul class="cv-list zh">
+    <li><strong>SAIC 旅行资助</strong>，芝加哥艺术学院</li>
+    <li><strong>Tangential Space 驻留</strong>，Nonation 艺术实验空间（2024–2025）</li>
+    <li><strong>“回家项目”驻留</strong>，弘美术馆、Te Edition、温州肯恩大学图书馆（2025）</li>
+  </ul>
+  <ul class="cv-list en">
     <li><strong>SAIC Travel Grant</strong>, School of the Art Institute of Chicago</li>
     <li><strong>Tangential Space Residency</strong>, Nonation Art Lab (2024–2025)</li>
     <li><strong>"Returning Home Project" Residency</strong>, Hong Museum, Te Edition, Wenzhou Kean University Library (2025)</li>
   </ul>
+
+  <script>
+    // 语言切换:点哪个按钮,整页就只显示哪种语言
+    (function () {
+      var root = document.documentElement;
+      var buttons = document.querySelectorAll('.lang-switch button');
+      function apply(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'en' ? 'en' : 'zh-Hans');
+        document.title = lang === 'en' ? 'CV · Yejo' : 'CV · 叶舟';
+        buttons.forEach(function (b) {
+          b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
+        });
+      }
+      buttons.forEach(function (b) {
+        b.addEventListener('click', function () {
+          var lang = b.getAttribute('data-lang');
+          apply(lang);
+          try { localStorage.setItem('cv-lang', lang); } catch (e) {}
+        });
+      });
+      apply(root.getAttribute('data-lang') === 'en' ? 'en' : 'zh');
+    })();
+  </script>
 
 </body>
 </html>
